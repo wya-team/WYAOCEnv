@@ -1,0 +1,1103 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		952EB5E820F05FC80020D9F9 /* NavExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952EB5E720F05FC80020D9F9 /* NavExampleViewController.m */; };
+		952EB5EB20F05FE30020D9F9 /* RefreshExampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952EB5EA20F05FE30020D9F9 /* RefreshExampleController.m */; };
+		952EB5EE20F05FFD0020D9F9 /* AnimationExampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952EB5ED20F05FFD0020D9F9 /* AnimationExampleController.m */; };
+		952EB5F120F08FCA0020D9F9 /* ChangeNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952EB5F020F08FCA0020D9F9 /* ChangeNavBarController.m */; };
+		952EB5F420F0A3810020D9F9 /* RefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952EB5F320F0A3810020D9F9 /* RefreshTableViewController.m */; };
+		958FB47620F0574A00F44489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958FB47520F0574A00F44489 /* Assets.xcassets */; };
+		95C2FEDB20F0528C00ED829B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C2FED920F0528C00ED829B /* LaunchScreen.storyboard */; };
+		95C2FEDE20F0528C00ED829B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FEDD20F0528C00ED829B /* main.m */; };
+		95C2FEE820F0528C00ED829B /* WYAiOSEnvTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FEE720F0528C00ED829B /* WYAiOSEnvTests.m */; };
+		95C2FEF320F0528C00ED829B /* WYAiOSEnvUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FEF220F0528C00ED829B /* WYAiOSEnvUITests.m */; };
+		95C2FF6A20F0533500ED829B /* UIMenuItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF0A20F0533500ED829B /* UIMenuItem+Category.m */; };
+		95C2FF6B20F0533500ED829B /* NSMutableDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF0E20F0533500ED829B /* NSMutableDictionary+Safe.m */; };
+		95C2FF6C20F0533500ED829B /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF1020F0533500ED829B /* NSDictionary+Category.m */; };
+		95C2FF6D20F0533500ED829B /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF1120F0533500ED829B /* NSDictionary+Safe.m */; };
+		95C2FF6E20F0533500ED829B /* UITableView+CellAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF1420F0533500ED829B /* UITableView+CellAnimation.m */; };
+		95C2FF6F20F0533500ED829B /* UIButton+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF1620F0533500ED829B /* UIButton+Category.m */; };
+		95C2FF7020F0533600ED829B /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF1A20F0533500ED829B /* UIColor+Category.m */; };
+		95C2FF7120F0533600ED829B /* UIView+WYALayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF1D20F0533500ED829B /* UIView+WYALayout.m */; };
+		95C2FF7220F0533600ED829B /* NSString+DisplayTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2220F0533500ED829B /* NSString+DisplayTime.m */; };
+		95C2FF7320F0533600ED829B /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2320F0533500ED829B /* NSString+Safe.m */; };
+		95C2FF7420F0533600ED829B /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2620F0533500ED829B /* NSString+Category.m */; };
+		95C2FF7520F0533600ED829B /* NSMutableString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2920F0533500ED829B /* NSMutableString+Safe.m */; };
+		95C2FF7620F0533600ED829B /* NSString+Predicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2A20F0533500ED829B /* NSString+Predicate.m */; };
+		95C2FF7720F0533600ED829B /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2B20F0533500ED829B /* NSString+MD5.m */; };
+		95C2FF7820F0533600ED829B /* NSMutableArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2D20F0533500ED829B /* NSMutableArray+Safe.m */; };
+		95C2FF7920F0533600ED829B /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF2E20F0533500ED829B /* NSArray+Category.m */; };
+		95C2FF7A20F0533600ED829B /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF3220F0533500ED829B /* NSArray+Safe.m */; };
+		95C2FF7B20F0533600ED829B /* NSAttributedString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF3520F0533500ED829B /* NSAttributedString+Category.m */; };
+		95C2FF7C20F0533600ED829B /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF3720F0533500ED829B /* NSObject+Swizzle.m */; };
+		95C2FF7D20F0533600ED829B /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF3920F0533500ED829B /* NSObject+PerformBlock.m */; };
+		95C2FF7E20F0533600ED829B /* NSObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF3B20F0533500ED829B /* NSObject+Category.m */; };
+		95C2FF7F20F0533600ED829B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF3E20F0533500ED829B /* BaseViewController.m */; };
+		95C2FF8020F0533600ED829B /* WYAHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF4520F0533500ED829B /* WYAHomeController.m */; };
+		95C2FF8220F0533600ED829B /* WYAMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF5220F0533500ED829B /* WYAMineController.m */; };
+		95C2FF8420F0533600ED829B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF5F20F0533500ED829B /* RootViewController.m */; };
+		95C2FF8520F0533600ED829B /* RootControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF6220F0533500ED829B /* RootControllerModel.m */; };
+		95C2FF8620F0533600ED829B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2FF6620F0533500ED829B /* AppDelegate.m */; };
+		F2D65C53BEA9A4821E1FFEDD /* libPods-WYAiOSEnv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C09EEF13ED37F442242C6C /* libPods-WYAiOSEnv.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95C2FEE420F0528C00ED829B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95C2FEC320F0528B00ED829B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95C2FECA20F0528B00ED829B;
+			remoteInfo = WYAiOSEnv;
+		};
+		95C2FEEF20F0528C00ED829B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95C2FEC320F0528B00ED829B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95C2FECA20F0528B00ED829B;
+			remoteInfo = WYAiOSEnv;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C7029995E79562742AF7EB9 /* Pods-WYAiOSEnv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYAiOSEnv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WYAiOSEnv/Pods-WYAiOSEnv.debug.xcconfig"; sourceTree = "<group>"; };
+		6E595E41FAC2B4D66BC88E36 /* Pods-WYAiOSEnv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYAiOSEnv.release.xcconfig"; path = "Pods/Target Support Files/Pods-WYAiOSEnv/Pods-WYAiOSEnv.release.xcconfig"; sourceTree = "<group>"; };
+		952EB5E620F05FC80020D9F9 /* NavExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavExampleViewController.h; sourceTree = "<group>"; };
+		952EB5E720F05FC80020D9F9 /* NavExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavExampleViewController.m; sourceTree = "<group>"; };
+		952EB5E920F05FE30020D9F9 /* RefreshExampleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshExampleController.h; sourceTree = "<group>"; };
+		952EB5EA20F05FE30020D9F9 /* RefreshExampleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshExampleController.m; sourceTree = "<group>"; };
+		952EB5EC20F05FFD0020D9F9 /* AnimationExampleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationExampleController.h; sourceTree = "<group>"; };
+		952EB5ED20F05FFD0020D9F9 /* AnimationExampleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationExampleController.m; sourceTree = "<group>"; };
+		952EB5EF20F08FCA0020D9F9 /* ChangeNavBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeNavBarController.h; sourceTree = "<group>"; };
+		952EB5F020F08FCA0020D9F9 /* ChangeNavBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeNavBarController.m; sourceTree = "<group>"; };
+		952EB5F220F0A3810020D9F9 /* RefreshTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshTableViewController.h; sourceTree = "<group>"; };
+		952EB5F320F0A3810020D9F9 /* RefreshTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshTableViewController.m; sourceTree = "<group>"; };
+		958FB47520F0574A00F44489 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		95C2FECB20F0528B00ED829B /* WYAiOSEnv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYAiOSEnv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95C2FEDA20F0528C00ED829B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95C2FEDC20F0528C00ED829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95C2FEDD20F0528C00ED829B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		95C2FEE320F0528C00ED829B /* WYAiOSEnvTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WYAiOSEnvTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95C2FEE720F0528C00ED829B /* WYAiOSEnvTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYAiOSEnvTests.m; sourceTree = "<group>"; };
+		95C2FEE920F0528C00ED829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95C2FEEE20F0528C00ED829B /* WYAiOSEnvUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WYAiOSEnvUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95C2FEF220F0528C00ED829B /* WYAiOSEnvUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYAiOSEnvUITests.m; sourceTree = "<group>"; };
+		95C2FEF420F0528C00ED829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95C2FF0220F0533500ED829B /* WYANetRequestUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYANetRequestUrl.h; sourceTree = "<group>"; };
+		95C2FF0320F0533500ED829B /* WYANoticName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYANoticName.h; sourceTree = "<group>"; };
+		95C2FF0420F0533500ED829B /* WYAThirdClassHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYAThirdClassHeader.h; sourceTree = "<group>"; };
+		95C2FF0520F0533500ED829B /* WYAMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYAMacros.h; sourceTree = "<group>"; };
+		95C2FF0620F0533500ED829B /* WYABaseConfig.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYABaseConfig.pch; sourceTree = "<group>"; };
+		95C2FF0920F0533500ED829B /* UIMenuItem+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+Category.h"; sourceTree = "<group>"; };
+		95C2FF0A20F0533500ED829B /* UIMenuItem+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+Category.m"; sourceTree = "<group>"; };
+		95C2FF0C20F0533500ED829B /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		95C2FF0D20F0533500ED829B /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
+		95C2FF0E20F0533500ED829B /* NSMutableDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Safe.m"; sourceTree = "<group>"; };
+		95C2FF0F20F0533500ED829B /* NSMutableDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Safe.h"; sourceTree = "<group>"; };
+		95C2FF1020F0533500ED829B /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
+		95C2FF1120F0533500ED829B /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
+		95C2FF1320F0533500ED829B /* UITableView+CellAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CellAnimation.h"; sourceTree = "<group>"; };
+		95C2FF1420F0533500ED829B /* UITableView+CellAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CellAnimation.m"; sourceTree = "<group>"; };
+		95C2FF1620F0533500ED829B /* UIButton+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Category.m"; sourceTree = "<group>"; };
+		95C2FF1720F0533500ED829B /* UIButton+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Category.h"; sourceTree = "<group>"; };
+		95C2FF1920F0533500ED829B /* UIColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Category.h"; sourceTree = "<group>"; };
+		95C2FF1A20F0533500ED829B /* UIColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Category.m"; sourceTree = "<group>"; };
+		95C2FF1C20F0533500ED829B /* UIView+WYALayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WYALayout.h"; sourceTree = "<group>"; };
+		95C2FF1D20F0533500ED829B /* UIView+WYALayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WYALayout.m"; sourceTree = "<group>"; };
+		95C2FF2020F0533500ED829B /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
+		95C2FF2120F0533500ED829B /* NSMutableString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Safe.h"; sourceTree = "<group>"; };
+		95C2FF2220F0533500ED829B /* NSString+DisplayTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DisplayTime.m"; sourceTree = "<group>"; };
+		95C2FF2320F0533500ED829B /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
+		95C2FF2420F0533500ED829B /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		95C2FF2520F0533500ED829B /* NSString+Predicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Predicate.h"; sourceTree = "<group>"; };
+		95C2FF2620F0533500ED829B /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
+		95C2FF2720F0533500ED829B /* NSString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Safe.h"; sourceTree = "<group>"; };
+		95C2FF2820F0533500ED829B /* NSString+DisplayTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DisplayTime.h"; sourceTree = "<group>"; };
+		95C2FF2920F0533500ED829B /* NSMutableString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Safe.m"; sourceTree = "<group>"; };
+		95C2FF2A20F0533500ED829B /* NSString+Predicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Predicate.m"; sourceTree = "<group>"; };
+		95C2FF2B20F0533500ED829B /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		95C2FF2D20F0533500ED829B /* NSMutableArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Safe.m"; sourceTree = "<group>"; };
+		95C2FF2E20F0533500ED829B /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
+		95C2FF2F20F0533500ED829B /* NSArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Safe.h"; sourceTree = "<group>"; };
+		95C2FF3020F0533500ED829B /* NSArray+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Category.h"; sourceTree = "<group>"; };
+		95C2FF3120F0533500ED829B /* NSMutableArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Safe.h"; sourceTree = "<group>"; };
+		95C2FF3220F0533500ED829B /* NSArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Safe.m"; sourceTree = "<group>"; };
+		95C2FF3420F0533500ED829B /* NSAttributedString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Category.h"; sourceTree = "<group>"; };
+		95C2FF3520F0533500ED829B /* NSAttributedString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Category.m"; sourceTree = "<group>"; };
+		95C2FF3720F0533500ED829B /* NSObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swizzle.m"; sourceTree = "<group>"; };
+		95C2FF3820F0533500ED829B /* NSObject+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Category.h"; sourceTree = "<group>"; };
+		95C2FF3920F0533500ED829B /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
+		95C2FF3A20F0533500ED829B /* NSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Swizzle.h"; sourceTree = "<group>"; };
+		95C2FF3B20F0533500ED829B /* NSObject+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Category.m"; sourceTree = "<group>"; };
+		95C2FF3C20F0533500ED829B /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
+		95C2FF3E20F0533500ED829B /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		95C2FF3F20F0533500ED829B /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		95C2FF4420F0533500ED829B /* WYAHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYAHomeController.h; sourceTree = "<group>"; };
+		95C2FF4520F0533500ED829B /* WYAHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYAHomeController.m; sourceTree = "<group>"; };
+		95C2FF5220F0533500ED829B /* WYAMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYAMineController.m; sourceTree = "<group>"; };
+		95C2FF5320F0533500ED829B /* WYAMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYAMineController.h; sourceTree = "<group>"; };
+		95C2FF5F20F0533500ED829B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		95C2FF6020F0533500ED829B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		95C2FF6220F0533500ED829B /* RootControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootControllerModel.m; sourceTree = "<group>"; };
+		95C2FF6320F0533500ED829B /* RootControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootControllerModel.h; sourceTree = "<group>"; };
+		95C2FF6520F0533500ED829B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		95C2FF6620F0533500ED829B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E5C09EEF13ED37F442242C6C /* libPods-WYAiOSEnv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WYAiOSEnv.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95C2FEC820F0528B00ED829B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2D65C53BEA9A4821E1FFEDD /* libPods-WYAiOSEnv.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2FEE020F0528C00ED829B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2FEEB20F0528C00ED829B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D58A82D018BD5D3B50876E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C7029995E79562742AF7EB9 /* Pods-WYAiOSEnv.debug.xcconfig */,
+				6E595E41FAC2B4D66BC88E36 /* Pods-WYAiOSEnv.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		952EB5E520F058140020D9F9 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				952EB5E620F05FC80020D9F9 /* NavExampleViewController.h */,
+				952EB5E720F05FC80020D9F9 /* NavExampleViewController.m */,
+				952EB5EF20F08FCA0020D9F9 /* ChangeNavBarController.h */,
+				952EB5F020F08FCA0020D9F9 /* ChangeNavBarController.m */,
+				952EB5E920F05FE30020D9F9 /* RefreshExampleController.h */,
+				952EB5EA20F05FE30020D9F9 /* RefreshExampleController.m */,
+				952EB5EC20F05FFD0020D9F9 /* AnimationExampleController.h */,
+				952EB5ED20F05FFD0020D9F9 /* AnimationExampleController.m */,
+				952EB5F220F0A3810020D9F9 /* RefreshTableViewController.h */,
+				952EB5F320F0A3810020D9F9 /* RefreshTableViewController.m */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		95C2FEC220F0528B00ED829B = {
+			isa = PBXGroup;
+			children = (
+				95C2FECD20F0528B00ED829B /* WYAiOSEnv */,
+				95C2FEE620F0528C00ED829B /* WYAiOSEnvTests */,
+				95C2FEF120F0528C00ED829B /* WYAiOSEnvUITests */,
+				95C2FECC20F0528B00ED829B /* Products */,
+				2D58A82D018BD5D3B50876E6 /* Pods */,
+				D83764D07F0DA6788B0B7539 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		95C2FECC20F0528B00ED829B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FECB20F0528B00ED829B /* WYAiOSEnv.app */,
+				95C2FEE320F0528C00ED829B /* WYAiOSEnvTests.xctest */,
+				95C2FEEE20F0528C00ED829B /* WYAiOSEnvUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95C2FECD20F0528B00ED829B /* WYAiOSEnv */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF6420F0533500ED829B /* AppDelegate */,
+				95C2FF5D20F0533500ED829B /* RootController */,
+				95C2FF3D20F0533500ED829B /* BaseFile */,
+				952EB5E520F058140020D9F9 /* Example */,
+				95C2FF4020F0533500ED829B /* Class */,
+				95C2FF0120F0533500ED829B /* Config */,
+				95C2FF0020F0533500ED829B /* Extension */,
+				95C2FF0720F0533500ED829B /* Category */,
+				95C2FF6820F0533500ED829B /* Libs */,
+				95C2FF6920F0533500ED829B /* Resources */,
+				95C2FF6720F0533500ED829B /* Tools */,
+				95C2FED920F0528C00ED829B /* LaunchScreen.storyboard */,
+				958FB47520F0574A00F44489 /* Assets.xcassets */,
+				95C2FEDC20F0528C00ED829B /* Info.plist */,
+				95C2FEDD20F0528C00ED829B /* main.m */,
+			);
+			path = WYAiOSEnv;
+			sourceTree = "<group>";
+		};
+		95C2FEE620F0528C00ED829B /* WYAiOSEnvTests */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FEE720F0528C00ED829B /* WYAiOSEnvTests.m */,
+				95C2FEE920F0528C00ED829B /* Info.plist */,
+			);
+			path = WYAiOSEnvTests;
+			sourceTree = "<group>";
+		};
+		95C2FEF120F0528C00ED829B /* WYAiOSEnvUITests */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FEF220F0528C00ED829B /* WYAiOSEnvUITests.m */,
+				95C2FEF420F0528C00ED829B /* Info.plist */,
+			);
+			path = WYAiOSEnvUITests;
+			sourceTree = "<group>";
+		};
+		95C2FF0020F0533500ED829B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		95C2FF0120F0533500ED829B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF0220F0533500ED829B /* WYANetRequestUrl.h */,
+				95C2FF0320F0533500ED829B /* WYANoticName.h */,
+				95C2FF0420F0533500ED829B /* WYAThirdClassHeader.h */,
+				95C2FF0520F0533500ED829B /* WYAMacros.h */,
+				95C2FF0620F0533500ED829B /* WYABaseConfig.pch */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		95C2FF0720F0533500ED829B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF0820F0533500ED829B /* UIMenuItem */,
+				95C2FF0B20F0533500ED829B /* NSDictionary */,
+				95C2FF1220F0533500ED829B /* TableView */,
+				95C2FF1520F0533500ED829B /* UIButton */,
+				95C2FF1820F0533500ED829B /* UIColor */,
+				95C2FF1B20F0533500ED829B /* UIView */,
+				95C2FF1E20F0533500ED829B /* NSData */,
+				95C2FF1F20F0533500ED829B /* NSString */,
+				95C2FF2C20F0533500ED829B /* NSArray */,
+				95C2FF3320F0533500ED829B /* NSAttributedString */,
+				95C2FF3620F0533500ED829B /* NSObject */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		95C2FF0820F0533500ED829B /* UIMenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF0920F0533500ED829B /* UIMenuItem+Category.h */,
+				95C2FF0A20F0533500ED829B /* UIMenuItem+Category.m */,
+			);
+			path = UIMenuItem;
+			sourceTree = "<group>";
+		};
+		95C2FF0B20F0533500ED829B /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF0F20F0533500ED829B /* NSMutableDictionary+Safe.h */,
+				95C2FF0E20F0533500ED829B /* NSMutableDictionary+Safe.m */,
+				95C2FF0D20F0533500ED829B /* NSDictionary+Category.h */,
+				95C2FF1020F0533500ED829B /* NSDictionary+Category.m */,
+				95C2FF0C20F0533500ED829B /* NSDictionary+Safe.h */,
+				95C2FF1120F0533500ED829B /* NSDictionary+Safe.m */,
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
+		95C2FF1220F0533500ED829B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF1320F0533500ED829B /* UITableView+CellAnimation.h */,
+				95C2FF1420F0533500ED829B /* UITableView+CellAnimation.m */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		95C2FF1520F0533500ED829B /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF1720F0533500ED829B /* UIButton+Category.h */,
+				95C2FF1620F0533500ED829B /* UIButton+Category.m */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		95C2FF1820F0533500ED829B /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF1920F0533500ED829B /* UIColor+Category.h */,
+				95C2FF1A20F0533500ED829B /* UIColor+Category.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		95C2FF1B20F0533500ED829B /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF1C20F0533500ED829B /* UIView+WYALayout.h */,
+				95C2FF1D20F0533500ED829B /* UIView+WYALayout.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		95C2FF1E20F0533500ED829B /* NSData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSData;
+			sourceTree = "<group>";
+		};
+		95C2FF1F20F0533500ED829B /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF2120F0533500ED829B /* NSMutableString+Safe.h */,
+				95C2FF2920F0533500ED829B /* NSMutableString+Safe.m */,
+				95C2FF2720F0533500ED829B /* NSString+Safe.h */,
+				95C2FF2320F0533500ED829B /* NSString+Safe.m */,
+				95C2FF2020F0533500ED829B /* NSString+Category.h */,
+				95C2FF2620F0533500ED829B /* NSString+Category.m */,
+				95C2FF2820F0533500ED829B /* NSString+DisplayTime.h */,
+				95C2FF2220F0533500ED829B /* NSString+DisplayTime.m */,
+				95C2FF2520F0533500ED829B /* NSString+Predicate.h */,
+				95C2FF2A20F0533500ED829B /* NSString+Predicate.m */,
+				95C2FF2420F0533500ED829B /* NSString+MD5.h */,
+				95C2FF2B20F0533500ED829B /* NSString+MD5.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		95C2FF2C20F0533500ED829B /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF3020F0533500ED829B /* NSArray+Category.h */,
+				95C2FF2E20F0533500ED829B /* NSArray+Category.m */,
+				95C2FF3120F0533500ED829B /* NSMutableArray+Safe.h */,
+				95C2FF2D20F0533500ED829B /* NSMutableArray+Safe.m */,
+				95C2FF2F20F0533500ED829B /* NSArray+Safe.h */,
+				95C2FF3220F0533500ED829B /* NSArray+Safe.m */,
+			);
+			path = NSArray;
+			sourceTree = "<group>";
+		};
+		95C2FF3320F0533500ED829B /* NSAttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF3420F0533500ED829B /* NSAttributedString+Category.h */,
+				95C2FF3520F0533500ED829B /* NSAttributedString+Category.m */,
+			);
+			path = NSAttributedString;
+			sourceTree = "<group>";
+		};
+		95C2FF3620F0533500ED829B /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF3A20F0533500ED829B /* NSObject+Swizzle.h */,
+				95C2FF3720F0533500ED829B /* NSObject+Swizzle.m */,
+				95C2FF3820F0533500ED829B /* NSObject+Category.h */,
+				95C2FF3B20F0533500ED829B /* NSObject+Category.m */,
+				95C2FF3C20F0533500ED829B /* NSObject+PerformBlock.h */,
+				95C2FF3920F0533500ED829B /* NSObject+PerformBlock.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		95C2FF3D20F0533500ED829B /* BaseFile */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF3F20F0533500ED829B /* BaseViewController.h */,
+				95C2FF3E20F0533500ED829B /* BaseViewController.m */,
+			);
+			path = BaseFile;
+			sourceTree = "<group>";
+		};
+		95C2FF4020F0533500ED829B /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF4120F0533500ED829B /* Home */,
+				95C2FF4F20F0533500ED829B /* Mine */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		95C2FF4120F0533500ED829B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF4220F0533500ED829B /* ViewModel */,
+				95C2FF4320F0533500ED829B /* Controller */,
+				95C2FF4620F0533500ED829B /* Model */,
+				95C2FF4720F0533500ED829B /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		95C2FF4220F0533500ED829B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95C2FF4320F0533500ED829B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF4420F0533500ED829B /* WYAHomeController.h */,
+				95C2FF4520F0533500ED829B /* WYAHomeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		95C2FF4620F0533500ED829B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95C2FF4720F0533500ED829B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95C2FF4F20F0533500ED829B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF5020F0533500ED829B /* ViewModel */,
+				95C2FF5120F0533500ED829B /* Controller */,
+				95C2FF5420F0533500ED829B /* Model */,
+				95C2FF5520F0533500ED829B /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		95C2FF5020F0533500ED829B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95C2FF5120F0533500ED829B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF5320F0533500ED829B /* WYAMineController.h */,
+				95C2FF5220F0533500ED829B /* WYAMineController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		95C2FF5420F0533500ED829B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95C2FF5520F0533500ED829B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95C2FF5D20F0533500ED829B /* RootController */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF5E20F0533500ED829B /* Controller */,
+				95C2FF6120F0533500ED829B /* Model */,
+			);
+			path = RootController;
+			sourceTree = "<group>";
+		};
+		95C2FF5E20F0533500ED829B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF6020F0533500ED829B /* RootViewController.h */,
+				95C2FF5F20F0533500ED829B /* RootViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		95C2FF6120F0533500ED829B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF6320F0533500ED829B /* RootControllerModel.h */,
+				95C2FF6220F0533500ED829B /* RootControllerModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95C2FF6420F0533500ED829B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF6520F0533500ED829B /* AppDelegate.h */,
+				95C2FF6620F0533500ED829B /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		95C2FF6720F0533500ED829B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		95C2FF6820F0533500ED829B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		95C2FF6920F0533500ED829B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D83764D07F0DA6788B0B7539 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5C09EEF13ED37F442242C6C /* libPods-WYAiOSEnv.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95C2FECA20F0528B00ED829B /* WYAiOSEnv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95C2FEF720F0528C00ED829B /* Build configuration list for PBXNativeTarget "WYAiOSEnv" */;
+			buildPhases = (
+				5B0ABA0C89C190C9921928BA /* [CP] Check Pods Manifest.lock */,
+				95C2FEC720F0528B00ED829B /* Sources */,
+				95C2FEC820F0528B00ED829B /* Frameworks */,
+				95C2FEC920F0528B00ED829B /* Resources */,
+				89B1970EF2EAB5C8C7CC9801 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WYAiOSEnv;
+			productName = WYAiOSEnv;
+			productReference = 95C2FECB20F0528B00ED829B /* WYAiOSEnv.app */;
+			productType = "com.apple.product-type.application";
+		};
+		95C2FEE220F0528C00ED829B /* WYAiOSEnvTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95C2FEFA20F0528C00ED829B /* Build configuration list for PBXNativeTarget "WYAiOSEnvTests" */;
+			buildPhases = (
+				95C2FEDF20F0528C00ED829B /* Sources */,
+				95C2FEE020F0528C00ED829B /* Frameworks */,
+				95C2FEE120F0528C00ED829B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95C2FEE520F0528C00ED829B /* PBXTargetDependency */,
+			);
+			name = WYAiOSEnvTests;
+			productName = WYAiOSEnvTests;
+			productReference = 95C2FEE320F0528C00ED829B /* WYAiOSEnvTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		95C2FEED20F0528C00ED829B /* WYAiOSEnvUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95C2FEFD20F0528C00ED829B /* Build configuration list for PBXNativeTarget "WYAiOSEnvUITests" */;
+			buildPhases = (
+				95C2FEEA20F0528C00ED829B /* Sources */,
+				95C2FEEB20F0528C00ED829B /* Frameworks */,
+				95C2FEEC20F0528C00ED829B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95C2FEF020F0528C00ED829B /* PBXTargetDependency */,
+			);
+			name = WYAiOSEnvUITests;
+			productName = WYAiOSEnvUITests;
+			productReference = 95C2FEEE20F0528C00ED829B /* WYAiOSEnvUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95C2FEC320F0528B00ED829B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = WeiYiAn;
+				TargetAttributes = {
+					95C2FECA20F0528B00ED829B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					95C2FEE220F0528C00ED829B = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 95C2FECA20F0528B00ED829B;
+					};
+					95C2FEED20F0528C00ED829B = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 95C2FECA20F0528B00ED829B;
+					};
+				};
+			};
+			buildConfigurationList = 95C2FEC620F0528B00ED829B /* Build configuration list for PBXProject "WYAiOSEnv" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 95C2FEC220F0528B00ED829B;
+			productRefGroup = 95C2FECC20F0528B00ED829B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95C2FECA20F0528B00ED829B /* WYAiOSEnv */,
+				95C2FEE220F0528C00ED829B /* WYAiOSEnvTests */,
+				95C2FEED20F0528C00ED829B /* WYAiOSEnvUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95C2FEC920F0528B00ED829B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				958FB47620F0574A00F44489 /* Assets.xcassets in Resources */,
+				95C2FEDB20F0528C00ED829B /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2FEE120F0528C00ED829B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2FEEC20F0528C00ED829B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B0ABA0C89C190C9921928BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WYAiOSEnv-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89B1970EF2EAB5C8C7CC9801 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WYAiOSEnv/Pods-WYAiOSEnv-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WYAiOSEnv/Pods-WYAiOSEnv-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95C2FEC720F0528B00ED829B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C2FF6E20F0533500ED829B /* UITableView+CellAnimation.m in Sources */,
+				95C2FF7E20F0533600ED829B /* NSObject+Category.m in Sources */,
+				95C2FF8520F0533600ED829B /* RootControllerModel.m in Sources */,
+				95C2FF6B20F0533500ED829B /* NSMutableDictionary+Safe.m in Sources */,
+				95C2FEDE20F0528C00ED829B /* main.m in Sources */,
+				95C2FF7320F0533600ED829B /* NSString+Safe.m in Sources */,
+				95C2FF7C20F0533600ED829B /* NSObject+Swizzle.m in Sources */,
+				95C2FF7820F0533600ED829B /* NSMutableArray+Safe.m in Sources */,
+				952EB5E820F05FC80020D9F9 /* NavExampleViewController.m in Sources */,
+				95C2FF7020F0533600ED829B /* UIColor+Category.m in Sources */,
+				95C2FF7920F0533600ED829B /* NSArray+Category.m in Sources */,
+				952EB5EE20F05FFD0020D9F9 /* AnimationExampleController.m in Sources */,
+				95C2FF7520F0533600ED829B /* NSMutableString+Safe.m in Sources */,
+				95C2FF6C20F0533500ED829B /* NSDictionary+Category.m in Sources */,
+				95C2FF6F20F0533500ED829B /* UIButton+Category.m in Sources */,
+				95C2FF8620F0533600ED829B /* AppDelegate.m in Sources */,
+				95C2FF7B20F0533600ED829B /* NSAttributedString+Category.m in Sources */,
+				95C2FF7420F0533600ED829B /* NSString+Category.m in Sources */,
+				95C2FF7D20F0533600ED829B /* NSObject+PerformBlock.m in Sources */,
+				95C2FF7A20F0533600ED829B /* NSArray+Safe.m in Sources */,
+				95C2FF6D20F0533500ED829B /* NSDictionary+Safe.m in Sources */,
+				952EB5EB20F05FE30020D9F9 /* RefreshExampleController.m in Sources */,
+				95C2FF7220F0533600ED829B /* NSString+DisplayTime.m in Sources */,
+				952EB5F120F08FCA0020D9F9 /* ChangeNavBarController.m in Sources */,
+				95C2FF7620F0533600ED829B /* NSString+Predicate.m in Sources */,
+				95C2FF7720F0533600ED829B /* NSString+MD5.m in Sources */,
+				952EB5F420F0A3810020D9F9 /* RefreshTableViewController.m in Sources */,
+				95C2FF8420F0533600ED829B /* RootViewController.m in Sources */,
+				95C2FF8020F0533600ED829B /* WYAHomeController.m in Sources */,
+				95C2FF7120F0533600ED829B /* UIView+WYALayout.m in Sources */,
+				95C2FF8220F0533600ED829B /* WYAMineController.m in Sources */,
+				95C2FF6A20F0533500ED829B /* UIMenuItem+Category.m in Sources */,
+				95C2FF7F20F0533600ED829B /* BaseViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2FEDF20F0528C00ED829B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C2FEE820F0528C00ED829B /* WYAiOSEnvTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2FEEA20F0528C00ED829B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C2FEF320F0528C00ED829B /* WYAiOSEnvUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95C2FEE520F0528C00ED829B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95C2FECA20F0528B00ED829B /* WYAiOSEnv */;
+			targetProxy = 95C2FEE420F0528C00ED829B /* PBXContainerItemProxy */;
+		};
+		95C2FEF020F0528C00ED829B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95C2FECA20F0528B00ED829B /* WYAiOSEnv */;
+			targetProxy = 95C2FEEF20F0528C00ED829B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		95C2FED920F0528C00ED829B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95C2FEDA20F0528C00ED829B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		95C2FEF520F0528C00ED829B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		95C2FEF620F0528C00ED829B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95C2FEF820F0528C00ED829B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C7029995E79562742AF7EB9 /* Pods-WYAiOSEnv.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J5265ZP7QT;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WYAiOSEnv/Config/WYABaseConfig.pch";
+				INFOPLIST_FILE = WYAiOSEnv/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weiyian.ws.WYAiOSEnv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		95C2FEF920F0528C00ED829B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E595E41FAC2B4D66BC88E36 /* Pods-WYAiOSEnv.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J5265ZP7QT;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WYAiOSEnv/Config/WYABaseConfig.pch";
+				INFOPLIST_FILE = WYAiOSEnv/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weiyian.ws.WYAiOSEnv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		95C2FEFB20F0528C00ED829B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J5265ZP7QT;
+				INFOPLIST_FILE = WYAiOSEnvTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weiyian.ws.WYAiOSEnvTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WYAiOSEnv.app/WYAiOSEnv";
+			};
+			name = Debug;
+		};
+		95C2FEFC20F0528C00ED829B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J5265ZP7QT;
+				INFOPLIST_FILE = WYAiOSEnvTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weiyian.ws.WYAiOSEnvTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WYAiOSEnv.app/WYAiOSEnv";
+			};
+			name = Release;
+		};
+		95C2FEFE20F0528C00ED829B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J5265ZP7QT;
+				INFOPLIST_FILE = WYAiOSEnvUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weiyian.ws.WYAiOSEnvUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WYAiOSEnv;
+			};
+			name = Debug;
+		};
+		95C2FEFF20F0528C00ED829B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J5265ZP7QT;
+				INFOPLIST_FILE = WYAiOSEnvUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weiyian.ws.WYAiOSEnvUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WYAiOSEnv;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95C2FEC620F0528B00ED829B /* Build configuration list for PBXProject "WYAiOSEnv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C2FEF520F0528C00ED829B /* Debug */,
+				95C2FEF620F0528C00ED829B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95C2FEF720F0528C00ED829B /* Build configuration list for PBXNativeTarget "WYAiOSEnv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C2FEF820F0528C00ED829B /* Debug */,
+				95C2FEF920F0528C00ED829B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95C2FEFA20F0528C00ED829B /* Build configuration list for PBXNativeTarget "WYAiOSEnvTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C2FEFB20F0528C00ED829B /* Debug */,
+				95C2FEFC20F0528C00ED829B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95C2FEFD20F0528C00ED829B /* Build configuration list for PBXNativeTarget "WYAiOSEnvUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C2FEFE20F0528C00ED829B /* Debug */,
+				95C2FEFF20F0528C00ED829B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95C2FEC320F0528B00ED829B /* Project object */;
+}
