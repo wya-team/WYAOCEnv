@@ -1,10 +1,10 @@
-# android-env
+# WYAiOSEnv
 
 [![changelog][changelog-image]][changelog-url]
 
 ## Demo
 
-![Alt text](https://raw.githubusercontent.com/wya-team/android-env/master/demo.gif)
+![Alt text](https://raw.githubusercontent.com/wya-team/WYAiOSEnv/master/demo.gif)
 
 ## 安装
 

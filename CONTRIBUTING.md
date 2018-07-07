@@ -1,6 +1,6 @@
 # 贡献指南
 
-这篇指南会指导你如何为 `android-env` 贡献一份自己的力量，请在你要提 `issue` 或者 `pull request` 之前花几分钟来阅读一遍这篇指南。
+这篇指南会指导你如何为 `WYAiOSEnv` 贡献一份自己的力量，请在你要提 `issue` 或者 `pull request` 之前花几分钟来阅读一遍这篇指南。
 
 ## 行为准则
 
@@ -16,9 +16,9 @@
 
 ## Bugs
 
-我们使用 [`GitHub Issues`](https://github.com/wya-team/android-env/issues) 来做 `bug` 追踪。
+我们使用 [`GitHub Issues`](https://github.com/wya-team/WYAiOSEnv/issues) 来做 `bug` 追踪。
 
-在你报告一个 `bug` 之前，请先确保已经搜索过已有的 `issue` 和阅读了我们的 [常见问题](https://github.com/wya-team/android-env/wiki/FAQ)。
+在你报告一个 `bug` 之前，请先确保已经搜索过已有的 `issue` 和阅读了我们的 [常见问题](https://github.com/wya-team/WYAiOSEnv/wiki/FAQ)。
 
 ## 新增功能
 
@@ -52,7 +52,7 @@
 
 ## 开发流程
 
-在你 `clone` 了 `android-env`  的代码并且使用 `*** install` 安装完依赖后，你还可以运行下面几个常用的命令：
+在你 `clone` 了 `WYAiOSEnv`  的代码并且使用 `*** install` 安装完依赖后，你还可以运行下面几个常用的命令：
 
 1. ...
 2. ...
