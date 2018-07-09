@@ -14,13 +14,24 @@
 -(void)addCallBackAction:(ButtonActionCallBack)action
         forControlEvents:(UIControlEvents)controlEvents
 {
-    [self addCallBackAction:action forControlEvents:controlEvents];
+    objc_setAssociatedObject(self, @selector(addCallBackAction:forControlEvents:), action, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    [self addTarget:self action:@selector(blockActionTouched:) forControlEvents:controlEvents];
 }
 
 -(void)addCallBackAction:(ButtonActionCallBack)action
 {
     [self addCallBackAction:action forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)blockActionTouched:(UIButton *)btn
+{
+    ButtonActionCallBack block = objc_getAssociatedObject(self, @selector(addCallBackAction:forControlEvents:));
+    if (block)
+    {
+        block(btn);
+    }
+}
+
 @end
 
 
@@ -66,5 +77,85 @@ static char leftNameKey;
     }
     return CGRectContainsPoint(rect, point) ? self : nil;
 }
+
+- (void)setImageLoctionRightWithSpace:(CGFloat)space{
+    
+    // 1. 得到imageView和titleLabel的宽、高
+    CGFloat imageWith = self.imageView.frame.size.width;
+    
+    CGFloat labelWidth = 0.0;
+    
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        // 由于iOS8中titleLabel的size为0，用下面的这种设置
+        labelWidth = self.titleLabel.intrinsicContentSize.width;
+    } else {
+        labelWidth = self.titleLabel.frame.size.width;
+    }
+    
+    // 2. 声明全局的imageEdgeInsets和labelEdgeInsets
+    UIEdgeInsets imageEdgeInsets = UIEdgeInsetsZero;
+    UIEdgeInsets labelEdgeInsets = UIEdgeInsetsZero;
+    
+    imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth + space , 0, -labelWidth - space);
+    labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith - space , 0, imageWith + space);
+    
+    [self setTitleEdgeInsets:labelEdgeInsets];
+    [self setImageEdgeInsets:imageEdgeInsets];
+}
+
+- (void)setImageLocationTopWithSpace:(CGFloat)space{
+    // 1. 得到imageView和titleLabel的宽、高
+    CGFloat imageWith = self.imageView.frame.size.width;
+    CGFloat imageHeight = self.imageView.frame.size.height;
+    
+    CGFloat labelWidth = 0.0;
+    CGFloat labelHeight = 0.0;
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        // 由于iOS8中titleLabel的size为0，用下面的这种设置
+        labelWidth = self.titleLabel.intrinsicContentSize.width;
+        labelHeight = self.titleLabel.intrinsicContentSize.height;
+    } else {
+        labelWidth = self.titleLabel.frame.size.width;
+        labelHeight = self.titleLabel.frame.size.height;
+    }
+    
+    // 2. 声明全局的imageEdgeInsets和labelEdgeInsets
+    UIEdgeInsets imageEdgeInsets = UIEdgeInsetsZero;
+    UIEdgeInsets labelEdgeInsets = UIEdgeInsetsZero;
+    
+    imageEdgeInsets = UIEdgeInsetsMake(-labelHeight - space , 0, 0, -labelWidth);
+    labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith, -imageHeight - space , 0);
+    
+    [self setTitleEdgeInsets:labelEdgeInsets];
+    [self setImageEdgeInsets:imageEdgeInsets];
+}
+
+- (void)setImageLocationBottomWithSpace:(CGFloat)space{
+    // 1. 得到imageView和titleLabel的宽、高
+    CGFloat imageWith = self.imageView.frame.size.width;
+    CGFloat imageHeight = self.imageView.frame.size.height;
+    
+    CGFloat labelWidth = 0.0;
+    CGFloat labelHeight = 0.0;
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        // 由于iOS8中titleLabel的size为0，用下面的这种设置
+        labelWidth = self.titleLabel.intrinsicContentSize.width;
+        labelHeight = self.titleLabel.intrinsicContentSize.height;
+    } else {
+        labelWidth = self.titleLabel.frame.size.width;
+        labelHeight = self.titleLabel.frame.size.height;
+    }
+    
+    // 2. 声明全局的imageEdgeInsets和labelEdgeInsets
+    UIEdgeInsets imageEdgeInsets = UIEdgeInsetsZero;
+    UIEdgeInsets labelEdgeInsets = UIEdgeInsetsZero;
+    
+    imageEdgeInsets = UIEdgeInsetsMake(0, 0, -labelHeight - space , -labelWidth);
+    labelEdgeInsets = UIEdgeInsetsMake(-imageHeight - space , -imageWith, 0, 0);
+    
+    [self setTitleEdgeInsets:labelEdgeInsets];
+    [self setImageEdgeInsets:imageEdgeInsets];
+}
+
 
 @end

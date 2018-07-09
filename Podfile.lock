@@ -38,18 +38,6 @@ DEPENDENCIES:
   - SDWebImage
   - YYModel
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AFNetworking
-    - Bugly
-    - FMDB
-    - IQKeyboardManager
-    - Masonry
-    - MBProgressHUD
-    - MJRefresh
-    - SDWebImage
-    - YYModel
-
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
@@ -63,4 +51,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c5650e14d1300561f2a9a5365d8d05619c814e57
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

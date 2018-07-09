@@ -31,4 +31,25 @@ typedef void(^ButtonActionCallBack)(UIButton *button);
  */
 - (void)setEnlargeEdgeWithTop:(CGFloat)top right:(CGFloat)right bottom:(CGFloat)bottom left:(CGFloat)left;
 
+/**
+ 设置图片在右，需先指定button.frame
+ 
+ @param space 间距
+ */
+- (void)setImageLoctionRightWithSpace:(CGFloat)space;
+
+/**
+ 设置图片在上，需先指定button.frame
+ 
+ @param space 间距
+ */
+- (void)setImageLocationTopWithSpace:(CGFloat)space;
+
+/**
+ 设置图片在下，需先指定button.frame
+ 
+ @param space 间距
+ */
+- (void)setImageLocationBottomWithSpace:(CGFloat)space;
+
 @end

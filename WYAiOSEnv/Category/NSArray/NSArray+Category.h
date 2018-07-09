@@ -16,4 +16,11 @@
  @return json字符串
  */
 - (NSString *)transToJSONString;
+
+/**
+ 反转数组
+ 
+ @return 完成反转的数组
+ */
+- (NSArray *)reverseArray;
 @end

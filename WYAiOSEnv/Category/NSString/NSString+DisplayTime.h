@@ -32,4 +32,5 @@
  @return <#return value description#>
  */
 + (NSString *) getStringWithTimestamp:(NSTimeInterval)timestamp formatter:(NSString*)formatter;
+
 @end

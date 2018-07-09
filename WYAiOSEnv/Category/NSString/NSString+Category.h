@@ -6,6 +6,10 @@
 //  Copyright © 2018年 WeiYiAn. All rights reserved.
 //
 
+/*
+ *  中文字符在utf-8环境下占3个字节，在gbk环境下占2个字节
+ */
+
 #import <Foundation/Foundation.h>
 
 @interface NSString (Category)
@@ -13,7 +17,7 @@
  电话号码中间4位*显示
  
  @param phoneNum 电话号码
- @return 135*****262
+ @return 135****2262
  */
 + (NSString*) getSecrectStringWithPhoneNumber:(NSString*)phoneNum;
 
@@ -91,4 +95,60 @@
  @return string
  */
 - (NSString*) trimmedString;
+
+/**
+ 在utf-8环境下判断字符串是否包含汉字
+ 
+ @return bool
+ */
+- (BOOL)isContainChineseInUTF8CodeingFormat;
+
+/**
+ 在gbk环境下判断字符串是否包含汉字
+ 
+ @return bool
+ */
+- (BOOL)isContainChineseInGBKCodeingFormat;
+
+/**
+ 在gbk环境下计算字符串有多少个汉字
+ 
+ @return 汉字个数
+ */
+- (NSInteger)chineseCountOfStringInGBKCodeingFormat;
+
+/**
+ 获取文件或文件夹大小
+ 
+ @return 大小
+ */
+- (unsigned long long)fileSize;
+
+/**
+ 清除html标签
+
+ @return string
+ */
+- (NSString *)stringByStrippingHTML;
+
+/**
+ 清除js脚本
+ 
+ @return string
+ */
+- (NSString *)stringByRemovingScriptsAndStrippingHTML;
+
+/**
+ 去除空格
+ 
+ @return string
+ */
+- (NSString *)trimmingWhitespace;
+
+/**
+ 去除空格与空行
+ 
+ @return string
+ */
+- (NSString *)trimmingWhitespaceAndNewlines;
 @end

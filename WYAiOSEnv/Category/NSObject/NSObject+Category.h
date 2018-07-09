@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sys/utsname.h>
 #import <objc/runtime.h>
 @interface NSObject (Category)
 @property (nonatomic, strong, readonly) NSMutableArray *associatedObjectNames;// 相关对象的名字
@@ -39,4 +40,39 @@
  *  @return 属性dict
  */
 - (NSArray *)getProperties;
+
+/**
+ 获取版本号
+ 
+ @return 版本号
+ */
++ (NSString *)version;
+
+/**
+ 获取build版本号
+ 
+ @return build版本号
+ */
++ (NSInteger)build;
+
+/**
+ 获取BundleID
+ 
+ @return BundleID
+ */
++ (NSString *)identifier;
+
+/**
+ 当前语言
+ 
+ @return 语言
+ */
++ (NSString *)currentLanguage;
+
+/**
+ 获取手机具体型号
+ 
+ @return 型号
+ */
++ (NSString *)deviceModel;
 @end

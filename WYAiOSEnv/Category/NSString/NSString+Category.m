@@ -99,4 +99,103 @@
 - (NSString *)trimmedString{
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
 }
+
+- (BOOL)isContainChineseInUTF8CodeingFormat
+{
+    NSUInteger length = [self length];
+    for (NSUInteger i = 0; i < length; i++)
+    {
+        NSRange range = NSMakeRange(i, 1);
+        NSString *subString = [self substringWithRange:range];
+        const char *cString = [subString UTF8String];
+        if (strlen(cString) == 3)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)isContainChineseInGBKCodeingFormat
+{
+    for (int i=0; i<self.length; i++) {
+        unichar ch = [self characterAtIndex:i];
+        if (0x4E00 <= ch  && ch <= 0x9FA5) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (NSInteger)chineseCountOfStringInGBKCodeingFormat{
+    
+    int ChineseCount = 0;
+    
+    if (self.length == 0) {return 0;}
+    
+    for (int i = 0; i<self.length; i++) {
+        
+        unichar c = [self characterAtIndex:i];
+        
+        if (c >=0x4E00 && c <=0x9FA5)        {
+            ChineseCount++ ;//汉字
+        }
+    }
+    
+    return ChineseCount;
+    
+}
+
+- (unsigned long long)fileSize
+{
+    // 总大小
+    unsigned long long size = 0;
+    //    NSString *sizeText = nil;
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    BOOL isDir = NO;
+    BOOL exist = [manager fileExistsAtPath:self isDirectory:&isDir];
+    
+    // 判断路径是否存在
+    if (!exist) return size;
+    if (isDir) { // 是文件夹
+        NSDirectoryEnumerator *enumerator = [manager enumeratorAtPath:self];
+        for (NSString *subPath in enumerator) {
+            NSString *fullPath = [self stringByAppendingPathComponent:subPath];
+            size += [manager attributesOfItemAtPath:fullPath error:nil].fileSize;
+            
+        }
+    }else{ // 是文件
+        size += [manager attributesOfItemAtPath:self error:nil].fileSize;
+    }
+    return size;
+}
+
+- (NSString *)stringByStrippingHTML
+{
+    return [self stringByReplacingOccurrencesOfString:@"<[^>]+>" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, self.length)];
+}
+
+- (NSString *)stringByRemovingScriptsAndStrippingHTML
+{
+    NSMutableString *mString = [self mutableCopy];
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<script[^>]*>[\\w\\W]*</script>" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSArray *matches = [regex matchesInString:mString options:NSMatchingReportProgress range:NSMakeRange(0, [mString length])];
+    for (NSTextCheckingResult *match in [matches reverseObjectEnumerator]) {
+        [mString replaceCharactersInRange:match.range withString:@""];
+    }
+    return [mString stringByStrippingHTML];
+}
+
+- (NSString *)trimmingWhitespace
+{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString *)trimmingWhitespaceAndNewlines
+{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 @end
