@@ -10,7 +10,7 @@
 #import "NavExampleViewController.h"
 #import "RefreshExampleController.h"
 #import "AnimationExampleController.h"
-
+#import "NetWorkExampleViewController.h"
 #define CELLID @"cellId"
 @interface WYAHomeController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;
@@ -32,7 +32,7 @@
 #pragma mark ======= Lazy loading
 - (NSArray *)dataSources{
     if (_dataSources == nil) {
-        _dataSources = @[@"导航栏操作",@"刷新加载",@"cell的动画效果"];
+        _dataSources = @[@"导航栏操作",@"刷新加载",@"cell的动画效果",@"网络相关"];
     }
     return _dataSources;
 }
@@ -84,6 +84,9 @@
         {
             vc = [[AnimationExampleController alloc]init];
         }
+            break;
+        case 3:
+            vc = [[NetWorkExampleViewController alloc]init];
             break;
         default:
             break;
