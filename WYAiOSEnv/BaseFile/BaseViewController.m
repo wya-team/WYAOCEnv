@@ -76,7 +76,7 @@
 - (UIButton *)rightButton
 {
     if (_rightButton == nil) {
-        _rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80*SizeAdapter, 44)];
+        _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightButton.titleLabel.font = FONT(13);
         _rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -90,7 +90,7 @@
 - (UIButton *)leftButton
 {
     if (_leftButton == nil) {
-        _leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+        _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftButton.titleLabel.font = FONT(13);
         _leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

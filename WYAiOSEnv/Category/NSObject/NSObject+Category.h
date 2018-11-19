@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <sys/utsname.h>
 #import <objc/runtime.h>
+typedef void (^TYNCountDownBlock) (NSUInteger timer);
+typedef void (^TYNFinishBlock) (void);
 @interface NSObject (Category)
 @property (nonatomic, strong, readonly) NSMutableArray *associatedObjectNames;// 相关对象的名字
 
@@ -75,4 +77,13 @@
  @return 型号
  */
 + (NSString *)deviceModel;
+
+/**
+ 按钮倒计时
+ 
+ @param time 倒计时总时间
+ @param countDownBlock 每秒倒计时会执行的block
+ @param finishBlock 倒计时完成会执行的block
+ */
+- (void)countDownTime:(NSUInteger)time countDownBlock:(TYNCountDownBlock)countDownBlock outTimeBlock:(TYNFinishBlock)finishBlock;
 @end
