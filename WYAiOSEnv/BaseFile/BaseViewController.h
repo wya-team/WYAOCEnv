@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface BaseViewController : UIViewController
 /**
  设置导航栏标题字体颜色 默认黑色
@@ -16,24 +17,24 @@
 /**
  标题字体大小
  */
-@property (nonatomic, assign) CGFloat  navTitleFont;
+@property (nonatomic, assign) CGFloat navTitleFont;
 
 /**
  返回按钮标题字体大小
  */
-@property (nonatomic, assign) CGFloat  leftBarButtonItemTitleFont;
+@property (nonatomic, assign) CGFloat leftBarButtonItemTitleFont;
 
 /**
  右侧标题字体大小
 
  */
-@property (nonatomic, assign) CGFloat  rightBarButtonItemTitleFont;
+@property (nonatomic, assign) CGFloat rightBarButtonItemTitleFont;
 
 /**
  导航栏是否展示横线 默认显示YES
 
  */
-@property (nonatomic, assign) BOOL  isShowNavLine;
+@property (nonatomic, assign) BOOL isShowNavLine;
 
 /**
  视图背景色 默认白色
@@ -59,14 +60,14 @@
  */
 @property (nonatomic, copy) NSString * navBackGroundImageNamed;
 #pragma mark ======= 解决tableView被tabBar遮挡问题
-- (void)solveableViewOverrides:(UITableView  * _Nonnull)tableView;
+- (void)solveableViewOverrides:(UITableView * _Nonnull)tableView;
 /**
  用于创建多个右侧按钮时调整按钮之间的间距，在创建之前先赋值，然后再创建按钮顺序不要搞错了
  示例：
  self.itemsSpace = 10;
  [self createNavigationItemsRightBarButtonWithNormalImg:@[@"img1",@"img2"] highlightedImg:nil];
  */
-@property (nonatomic, assign) CGFloat  itemsSpace;
+@property (nonatomic, assign) CGFloat itemsSpace;
 
 #pragma mark ======= 创建多个右侧按钮
 /**
@@ -74,7 +75,7 @@
 
  @param normalTitles 标题数组
  */
-- (void)createNavigationItemsRightBarButtonWithNormalTitle:(NSArray<NSString *> *_Nonnull)normalTitles;
+- (void)createNavigationItemsRightBarButtonWithNormalTitle:(NSArray<NSString *> * _Nonnull)normalTitles;
 
 /**
  创建多个右侧按钮 按钮的标题和颜色可以自定意 字体大小默认
@@ -83,9 +84,9 @@
  @param normalColors 普通状态的颜色，元素要与按钮标题对应
  @param highlightedColors 高亮状态的颜色(可以为nil)，元素要与按钮标题对应
  */
-- (void)createNavigationItemsRightBarButtonWithNormalTitles:(NSArray <NSString * > * _Nonnull)normalTitles
-                                                normalColor:(NSArray <UIColor * > * _Nonnull)normalColors
-                                           highlightedColor:(NSArray <UIColor * > * _Nonnull)highlightedColors;
+- (void)createNavigationItemsRightBarButtonWithNormalTitles:(NSArray<NSString *> * _Nonnull)normalTitles
+                                                normalColor:(NSArray<UIColor *> * _Nonnull)normalColors
+                                           highlightedColor:(NSArray<UIColor *> * _Nonnull)highlightedColors;
 
 /**
  创建多个右侧按钮 按钮的标题和颜色以及字体大小可以自定意
@@ -95,10 +96,10 @@
  @param highlightedColors 高亮状态的颜色（可以传nil）元素要与按钮标题对应
  @param fontNumbers 字体大小，以number方式传递，元素要与按钮标题对应
  */
-- (void)createNavigationItemsRightBarButtonWithNormalTitles:(NSArray <NSString *> * _Nonnull)normalTitles
-                                                normalColor:(NSArray <UIColor *> * _Nonnull)normalColors
-                                           highlightedColor:(NSArray <UIColor *> * _Nonnull)highlightedColors
-                                                  titleFont:(NSArray <NSNumber *> * _Nonnull)fontNumbers;
+- (void)createNavigationItemsRightBarButtonWithNormalTitles:(NSArray<NSString *> * _Nonnull)normalTitles
+                                                normalColor:(NSArray<UIColor *> * _Nonnull)normalColors
+                                           highlightedColor:(NSArray<UIColor *> * _Nonnull)highlightedColors
+                                                  titleFont:(NSArray<NSNumber *> * _Nonnull)fontNumbers;
 
 /**
  使用图片创建多个导航栏右侧按钮
@@ -106,8 +107,8 @@
  @param normalImags 普通状态下的图片数组
  @param highlightedImgs 高亮状态下的图片（可以传nil）要与普通状态的图片一一对应
  */
-- (void)createNavigationItemsRightBarButtonWithNormalImg:(NSArray <NSString *> * _Nonnull)normalImags
-                                         highlightedImg:(NSArray <NSString *> *)highlightedImgs;
+- (void)createNavigationItemsRightBarButtonWithNormalImg:(NSArray<NSString *> * _Nonnull)normalImags
+                                          highlightedImg:(NSArray<NSString *> *)highlightedImgs;
 
 #pragma mark ======= 创建一个右侧按钮
 /**
@@ -135,8 +136,7 @@
  @param highlightedImg highlightedImgNamed
  */
 - (void)createNavigationItemRightBarButtonWithNormalImg:(nonnull NSString *)normalImag
-                                           highlightedImg:(NSString *)highlightedImg;
-
+                                         highlightedImg:(NSString *)highlightedImg;
 
 /**
  多个自定义右侧按钮的点击事件

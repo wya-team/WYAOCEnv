@@ -34,7 +34,7 @@
     NSUInteger firstIndex = indexs.firstIndex;
     if (indexs == nil) {
         return;
-    } else if (indexs.count!=objects.count || firstIndex>objects.count) {
+    } else if (indexs.count != objects.count || firstIndex > objects.count) {
         return;
     } else {
         [self insertObjects:objects atIndexes:indexs];
@@ -53,7 +53,7 @@
 - (void)safeRemoveObjectsInRange:(NSRange)range
 {
     NSUInteger location = range.location;
-    NSUInteger length = range.length;
+    NSUInteger length   = range.length;
     if (location + length > self.count) {
         return;
     } else {

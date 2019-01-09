@@ -10,7 +10,8 @@
 
 @implementation NSString (FilePath)
 
-+ (NSString *)homePath{
++ (NSString *)homePath
+{
     return NSHomeDirectory();
 }
 

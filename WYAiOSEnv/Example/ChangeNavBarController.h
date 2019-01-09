@@ -13,5 +13,5 @@
 /**
  传入不同的字符串，展示不用的效果
  */
-@property (nonatomic, copy) NSString *  navStyle;
+@property (nonatomic, copy) NSString * navStyle;
 @end

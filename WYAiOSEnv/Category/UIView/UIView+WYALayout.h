@@ -37,7 +37,7 @@ typedef enum : NSUInteger {
  @param offset Shadow offset
  @param radius Shadow radius
  */
-- (void)cmam_setLayerShadow:(nullable UIColor*)color offset:(CGSize)offset radius:(CGFloat)radius;
+- (void)cmam_setLayerShadow:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius;
 
 /**
  Remove all subviews.
@@ -49,7 +49,7 @@ typedef enum : NSUInteger {
 /**
  Returns the view's view controller (may be nil).
  */
-@property (nullable, nonatomic, readonly) UIViewController *cmam_viewController;
+@property (nullable, nonatomic, readonly) UIViewController * cmam_viewController;
 
 /**
  Returns the visible alpha on screen, taking into account superview and window.
@@ -95,18 +95,18 @@ typedef enum : NSUInteger {
  */
 - (CGRect)cmam_convertRect:(CGRect)rect fromViewOrWindow:(nullable UIView *)view;
 
-@property (nonatomic) CGFloat cmam_left;        ///< Shortcut for frame.origin.x.
-@property (nonatomic) CGFloat cmam_top;         ///< Shortcut for frame.origin.y
-@property (nonatomic) CGFloat cmam_right;       ///< Shortcut for frame.origin.x + frame.size.width
-@property (nonatomic) CGFloat cmam_bottom;      ///< Shortcut for frame.origin.y + frame.size.height
-@property (nonatomic) CGFloat cmam_width;       ///< Shortcut for frame.size.width.
-@property (nonatomic) CGFloat cmam_height;      ///< Shortcut for frame.size.height.
-@property (nonatomic) CGFloat cmam_centerX;     ///< Shortcut for center.x
-@property (nonatomic) CGFloat cmam_centerY;     ///< Shortcut for center.y
-@property (nonatomic) CGPoint cmam_origin;      ///< Shortcut for frame.origin.
-@property (nonatomic) CGSize  cmam_size;        ///< Shortcut for frame.size.
+@property (nonatomic) CGFloat cmam_left;    ///< Shortcut for frame.origin.x.
+@property (nonatomic) CGFloat cmam_top;     ///< Shortcut for frame.origin.y
+@property (nonatomic) CGFloat cmam_right;   ///< Shortcut for frame.origin.x + frame.size.width
+@property (nonatomic) CGFloat cmam_bottom;  ///< Shortcut for frame.origin.y + frame.size.height
+@property (nonatomic) CGFloat cmam_width;   ///< Shortcut for frame.size.width.
+@property (nonatomic) CGFloat cmam_height;  ///< Shortcut for frame.size.height.
+@property (nonatomic) CGFloat cmam_centerX; ///< Shortcut for center.x
+@property (nonatomic) CGFloat cmam_centerY; ///< Shortcut for center.y
+@property (nonatomic) CGPoint cmam_origin;  ///< Shortcut for frame.origin.
+@property (nonatomic) CGSize cmam_size;     ///< Shortcut for frame.size.
 
-+ (void)cmam_showOscillatoryAnimationWithLayer:(CALayer *_Nullable)layer type:(CMAMOscillatoryAnimationType)type;
++ (void)cmam_showOscillatoryAnimationWithLayer:(CALayer * _Nullable)layer type:(CMAMOscillatoryAnimationType)type;
 
 #pragma mark - 设置部分圆角
 /**

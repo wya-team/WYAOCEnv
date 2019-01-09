@@ -13,20 +13,19 @@
 + (void)overrideInstanceMethod:(SEL)origSelector withInstanceMethod:(SEL)newSelector
 {
     Class class = [self class];
-    
+
     Method originalMethod = class_getInstanceMethod(class, origSelector);
     if (!originalMethod) {
         NSLog(@"original method %@ not found for class %@", NSStringFromSelector(origSelector), [self class]);
         return;
     }
-    
+
     Method overrideMethod = class_getInstanceMethod(class, newSelector);
     if (!overrideMethod) {
         NSLog(@"original method %@ not found for class %@", NSStringFromSelector(newSelector), [self class]);
         return;
     }
-    
-    
+
     BOOL didAddMethod = class_addMethod(class,
                                         origSelector,
                                         method_getImplementation(overrideMethod),
@@ -44,10 +43,10 @@
 + (void)overrideClassMethod:(SEL)origSelector withClassMethod:(SEL)newSelector
 {
     Class class = [self class];
-    
+
     Method originalMethod = class_getClassMethod(class, origSelector);
     Method overrideMethod = class_getClassMethod(class, newSelector);
-    
+
     BOOL didAddMethod = class_addMethod(class,
                                         origSelector,
                                         method_getImplementation(overrideMethod),
@@ -62,14 +61,13 @@
     }
 }
 
-
 + (void)exchangeInstanceMethod:(SEL)origSelector withInstanceMethod:(SEL)newSelector
 {
     Class class = [self class];
-    
+
     Method originalMethod = class_getInstanceMethod(class, origSelector);
     Method swizzledMethod = class_getInstanceMethod(class, newSelector);
-    
+
     BOOL didAddMethod = class_addMethod(class,
                                         origSelector,
                                         method_getImplementation(swizzledMethod),
@@ -87,10 +85,10 @@
 + (void)exchangeClassMethod:(SEL)origSelector withClassMethod:(SEL)newSelector
 {
     Class class = [self class];
-    
+
     Method originalMethod = class_getClassMethod(class, origSelector);
     Method swizzledMethod = class_getClassMethod(class, newSelector);
-    
+
     BOOL didAddMethod = class_addMethod(class,
                                         origSelector,
                                         method_getImplementation(swizzledMethod),

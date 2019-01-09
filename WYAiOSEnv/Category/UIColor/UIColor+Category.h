@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 /**
  *  功能:通过RGB创建颜色
  *
@@ -20,7 +19,7 @@
  *
  *  example: rgb(173.0,23.0,11.0)
  */
-UIColor *rgb(CGFloat red, CGFloat green, CGFloat blue);
+UIColor * rgb(CGFloat red, CGFloat green, CGFloat blue);
 
 /**
  *  功能:通过RGB以及alpha创建颜色
@@ -34,8 +33,7 @@ UIColor *rgb(CGFloat red, CGFloat green, CGFloat blue);
  *
  *  example: rgbA(173.0,23.0,11.0,0.5)
  */
-UIColor *rgbA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
-
+UIColor * rgbA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 
 @interface UIColor (Category)
 
@@ -62,7 +60,6 @@ UIColor *rgbA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
  */
 + (UIColor *)colorWithRGB:(NSUInteger)aRGB;
 
-
 /**
  调节颜色的明亮度
  
@@ -70,8 +67,7 @@ UIColor *rgbA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
  @param delta 明亮度
  @return <#return value description#>
  */
-+ (UIColor*) colorRGBonvertToHSB:(UIColor*)color withBrighnessDelta:(CGFloat)delta;
-
++ (UIColor *)colorRGBonvertToHSB:(UIColor *)color withBrighnessDelta:(CGFloat)delta;
 
 /**
  调整颜色的透明度
@@ -80,7 +76,6 @@ UIColor *rgbA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
  @param delta 透明度
  @return <#return value description#>
  */
-+ (UIColor*) colorRGBonvertToHSB:(UIColor*)color withAlphaDelta:(CGFloat)delta;
-
++ (UIColor *)colorRGBonvertToHSB:(UIColor *)color withAlphaDelta:(CGFloat)delta;
 
 @end

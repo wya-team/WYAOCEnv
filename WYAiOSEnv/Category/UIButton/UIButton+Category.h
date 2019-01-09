@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^ButtonActionCallBack)(UIButton *button);
+typedef void (^ButtonActionCallBack)(UIButton * button);
+
 @interface UIButton (Category)
 
--(void)addCallBackAction:(ButtonActionCallBack)action
-        forControlEvents:(UIControlEvents)controlEvents;
+- (void)addCallBackAction:(ButtonActionCallBack)action
+         forControlEvents:(UIControlEvents)controlEvents;
 
--(void)addCallBackAction:(ButtonActionCallBack)action;
+- (void)addCallBackAction:(ButtonActionCallBack)action;
 
 @end
 

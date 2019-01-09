@@ -19,7 +19,7 @@
  @param digit 限制最大位数
  @return 结果
  */
-- (NSNumber*)doRoundWithDigit:(NSUInteger)digit;
+- (NSNumber *)doRoundWithDigit:(NSUInteger)digit;
 
 /**
  取上整
@@ -27,7 +27,7 @@
  @param digit 限制最大位数
  @return 结果
  */
-- (NSNumber*)doCeilWithDigit:(NSUInteger)digit;
+- (NSNumber *)doCeilWithDigit:(NSUInteger)digit;
 
 /**
  取下整
@@ -35,6 +35,6 @@
  @param digit 限制最大位数
  @return 结果
  */
-- (NSNumber*)doFloorWithDigit:(NSUInteger)digit;
+- (NSNumber *)doFloorWithDigit:(NSUInteger)digit;
 
 @end

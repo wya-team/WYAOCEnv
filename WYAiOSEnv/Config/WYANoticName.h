@@ -9,5 +9,4 @@
 #ifndef WYANoticName_h
 #define WYANoticName_h
 
-
 #endif /* WYANoticName_h */

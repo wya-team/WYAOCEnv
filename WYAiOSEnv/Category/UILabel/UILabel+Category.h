@@ -10,7 +10,6 @@
 
 @interface UILabel (Category)
 
-
 /**
  label文字顶部对齐
  */
@@ -49,8 +48,7 @@
  @param font font
  @return 返回高度
  */
-+ (CGFloat)getHeightByWidth:(CGFloat)width title:(NSString *)title font:(UIFont*)font;
-
++ (CGFloat)getHeightByWidth:(CGFloat)width title:(NSString *)title font:(UIFont *)font;
 
 /**
  获得UILabel宽度

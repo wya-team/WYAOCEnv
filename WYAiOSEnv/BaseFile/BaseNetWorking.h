@@ -33,20 +33,19 @@
      任意的二进制数据 application/octet-stream
  */
 
-#import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
+#import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, ImageType) {
     imageForPNG,
     imageForJPEG,
 };
 
+typedef void (^Success)(id data);
 
-typedef void(^Success)(id data);
+typedef void (^Fail)(NSString * errorDes);
 
-typedef void(^Fail)(NSString *errorDes);
-
-typedef void(^Progress)(float progress);
+typedef void (^Progress)(float progress);
 
 @interface BaseNetWorking : NSObject
 
@@ -62,7 +61,6 @@ typedef void(^Progress)(float progress);
             Params:(NSMutableDictionary *)params
            Success:(Success)success
               Fail:(Fail)fail;
-
 
 /**
  Post请求

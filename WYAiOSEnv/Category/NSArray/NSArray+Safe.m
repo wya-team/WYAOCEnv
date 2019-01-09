@@ -18,7 +18,6 @@
     }
 }
 
-
 - (id)safeObjectAtIndex:(NSUInteger)index
 {
     if (index >= self.count) {
@@ -40,17 +39,16 @@
 - (NSArray *)safeSubarrayWithRange:(NSRange)range
 {
     NSUInteger location = range.location;
-    NSUInteger length = range.length;
+    NSUInteger length   = range.length;
     if (location + length > self.count) {
         //超过了边界,就获取从loction开始所有的item
         if ((location + length) > self.count) {
             length = (self.count - location);
             return [self safeSubarrayWithRange:NSMakeRange(location, length)];
         }
-        
+
         return nil;
-    }
-    else {
+    } else {
         return [self subarrayWithRange:range];
     }
 }

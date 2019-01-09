@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <sys/utsname.h>
 #import <objc/runtime.h>
-typedef void (^TYNCountDownBlock) (NSUInteger timer);
-typedef void (^TYNFinishBlock) (void);
+#import <sys/utsname.h>
+typedef void (^TYNCountDownBlock)(NSUInteger timer);
+typedef void (^TYNFinishBlock)(void);
+
 @interface NSObject (Category)
-@property (nonatomic, strong, readonly) NSMutableArray *associatedObjectNames;// 相关对象的名字
+@property (nonatomic, strong, readonly) NSMutableArray * associatedObjectNames; // 相关对象的名字
 
 /**
  为当前的object动态增加分类

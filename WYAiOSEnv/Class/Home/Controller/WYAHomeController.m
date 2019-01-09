@@ -7,49 +7,54 @@
 //
 
 #import "WYAHomeController.h"
-#import "NavExampleViewController.h"
-#import "RefreshExampleController.h"
 #import "AnimationExampleController.h"
+#import "NavExampleViewController.h"
 #import "NetWorkExampleViewController.h"
+#import "RefreshExampleController.h"
 #define CELLID @"cellId"
-@interface WYAHomeController ()<UITableViewDataSource,UITableViewDelegate>
+
+@interface WYAHomeController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) NSArray * dataSources;
 @end
 
 @implementation WYAHomeController
 #pragma mark ======= system interface
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 #pragma mark ======= Lazy loading
-- (NSArray *)dataSources{
+- (NSArray *)dataSources
+{
     if (_dataSources == nil) {
-        _dataSources = @[@"导航栏操作",@"刷新加载",@"cell的动画效果",@"网络相关"];
+        _dataSources = @[ @"导航栏操作", @"刷新加载", @"cell的动画效果", @"网络相关" ];
     }
     return _dataSources;
 }
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-        _tableView.delegate = self;
+        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        _tableView.delegate   = self;
         _tableView.dataSource = self;
-        [self solveableViewOverrides:_tableView];// 解决tableView被遮挡的问题
+        [self solveableViewOverrides:_tableView]; // 解决tableView被遮挡的问题
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELLID];
-        _tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return _tableView;
 }
 #pragma mark ======= UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,7 +65,7 @@
 {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CELLID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLID];
     }
     cell.textLabel.text = self.dataSources[indexPath.row];
     return cell;
@@ -68,26 +73,22 @@
 #pragma mark ======= UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BaseViewController * vc ;
+    BaseViewController * vc;
     switch (indexPath.row) {
-        case 0:
-        {
-            vc = [[NavExampleViewController alloc]init];
+        case 0: {
+            vc = [[NavExampleViewController alloc] init];
+        } break;
+        case 1: {
+            vc = [[RefreshExampleController alloc] init];
+        } break;
+        case 2: {
+            vc = [[AnimationExampleController alloc] init];
+        } break;
+        case 3: {
+            vc = [[NetWorkExampleViewController alloc] init];
         }
-            break;
-        case 1:
-        {
-            vc = [[RefreshExampleController alloc]init];
-        }
-            break;
-        case 2:
-        {
-            vc = [[AnimationExampleController alloc]init];
-        }
-            break;
-        case 3:
-            vc = [[NetWorkExampleViewController alloc]init];
-            break;
+
+        break;
         default:
             break;
     }

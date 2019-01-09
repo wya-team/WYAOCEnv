@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (MD5)
-- (NSString *) md5WithString;//MD5加密
+- (NSString *)md5WithString; //MD5加密
 - (NSString *)to16MD5;
 - (NSString *)sha1;
 - (NSString *)sha256;

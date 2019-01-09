@@ -30,8 +30,8 @@
 - (NSString *)safeSubstringWithRange:(NSRange)range
 {
     NSUInteger location = range.location;
-    NSUInteger length = range.length;
-    if (location+length > self.length) {
+    NSUInteger length   = range.length;
+    if (location + length > self.length) {
         return nil;
     } else {
         return [self substringWithRange:range];

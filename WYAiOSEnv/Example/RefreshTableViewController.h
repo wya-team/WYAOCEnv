@@ -10,5 +10,5 @@
 
 @interface RefreshTableViewController : UITableViewController
 @property (nonatomic, assign) NSInteger section;
-@property (nonatomic, assign) NSInteger  index;
+@property (nonatomic, assign) NSInteger index;
 @end

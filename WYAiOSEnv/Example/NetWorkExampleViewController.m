@@ -10,7 +10,8 @@
 #import "NetWorkViewController.h"
 
 #define NetWork @"NetWork"
-@interface NetWorkExampleViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface NetWorkExampleViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) NSArray * dataSources;
 @property (nonatomic, strong) NSArray * sectionTitleArray;
@@ -19,77 +20,78 @@
 
 @implementation NetWorkExampleViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.sectionTitleArray = @[@"上传",@"下载"];
+    self.sectionTitleArray = @[ @"上传", @"下载" ];
     [self.view addSubview:self.tableView];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (NSArray *)dataSources{
+- (NSArray *)dataSources
+{
     if (_dataSources == nil) {
-        _dataSources = @[@[@"上传图片",@"上传视频",@"上传文件"],@[@"下载单个文件",@"下载多个文件"]];
+        _dataSources = @[ @[ @"上传图片", @"上传视频", @"上传文件" ], @[ @"下载单个文件", @"下载多个文件" ] ];
     }
     return _dataSources;
 }
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-        _tableView.delegate = self;
+        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        _tableView.delegate   = self;
         _tableView.dataSource = self;
-        [self solveableViewOverrides:_tableView];// 解决tableView被遮挡的问题
+        [self solveableViewOverrides:_tableView]; // 解决tableView被遮挡的问题
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NetWork];
-        _tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-        
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return _tableView;
 }
 #pragma mark ======= UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.dataSources.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return [self.dataSources[section] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:NetWork];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NetWork];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NetWork];
     }
-    NSArray * array = self.dataSources[indexPath.section];
+    NSArray * array     = self.dataSources[indexPath.section];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = array[indexPath.row];
     return cell;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
-    label.text = self.sectionTitleArray[section];
-    label.textColor = [UIColor blackColor];
+    UILabel * label       = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    label.text            = self.sectionTitleArray[section];
+    label.textColor       = [UIColor blackColor];
     label.backgroundColor = randomColor;
     return label;
 }
 #pragma mark ======= UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NetWorkViewController * vc = [[NetWorkViewController alloc]init];
-    vc.section = indexPath.section;
+    NetWorkViewController * vc = [[NetWorkViewController alloc] init];
+    vc.section                 = indexPath.section;
     if (indexPath.section == 0) {
         vc.row = indexPath.row;
-    }else{
+    } else {
         vc.row = indexPath.row;
     }
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
 /*
 #pragma mark - Navigation

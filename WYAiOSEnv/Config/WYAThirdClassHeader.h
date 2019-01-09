@@ -9,9 +9,9 @@
 #ifndef WYAThirdClassHeader_h
 #define WYAThirdClassHeader_h
 #import "NSObject+Swizzle.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 #import <MJRefresh/MJRefresh.h>
 #import <Masonry/Masonry.h>
 #import <YYModel/YYModel.h>
-#import <MBProgressHUD/MBProgressHUD.h>
 
 #endif /* WYAThirdClassHeader_h */
