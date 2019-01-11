@@ -9,8 +9,7 @@
 #import "NSArray+Safe.h"
 
 @implementation NSArray (Safe)
-+ (instancetype)safeArrayWithObject:(id)object
-{
++ (instancetype)safeArrayWithObject:(id)object {
     if (object == nil) {
         return [self array];
     } else {
@@ -18,8 +17,7 @@
     }
 }
 
-- (id)safeObjectAtIndex:(NSUInteger)index
-{
+- (id)safeObjectAtIndex:(NSUInteger)index {
     if (index >= self.count) {
         return nil;
     } else {
@@ -27,8 +25,7 @@
     }
 }
 
-- (NSUInteger)safeIndexOfObject:(id)anObject
-{
+- (NSUInteger)safeIndexOfObject:(id)anObject {
     if (anObject == nil) {
         return NSNotFound;
     } else {
@@ -36,8 +33,7 @@
     }
 }
 
-- (NSArray *)safeSubarrayWithRange:(NSRange)range
-{
+- (NSArray *)safeSubarrayWithRange:(NSRange)range {
     NSUInteger location = range.location;
     NSUInteger length   = range.length;
     if (location + length > self.count) {

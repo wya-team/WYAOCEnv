@@ -9,8 +9,7 @@
 #import "NSString+DisplayTime.h"
 
 @implementation NSString (DisplayTime)
-+ (NSString *)compareCurrentTime:(NSTimeInterval)compareDate
-{
++ (NSString *)compareCurrentTime:(NSTimeInterval)compareDate {
     NSDate * confromTimesp = [NSDate dateWithTimeIntervalSince1970:compareDate / 1000];
 
     NSTimeInterval timeInterval = [confromTimesp timeIntervalSinceNow];
@@ -20,7 +19,7 @@
 
     NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSInteger unitFlags   = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday |
-                        NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+                          NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents * referenceComponents = [calendar components:unitFlags fromDate:confromTimesp];
     //    NSInteger referenceYear  =referenceComponents.year;
     //    NSInteger referenceMonth =referenceComponents.month;
@@ -55,12 +54,11 @@
 
     return result;
 }
-+ (NSString *)getDateStringWithTimestamp:(NSTimeInterval)timestamp
-{
++ (NSString *)getDateStringWithTimestamp:(NSTimeInterval)timestamp {
     NSDate * confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp / 1000];
     NSCalendar * calendar  = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSInteger unitFlags    = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday |
-                        NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+                          NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents * referenceComponents = [calendar components:unitFlags fromDate:confromTimesp];
     NSInteger referenceYear                = referenceComponents.year;
     NSInteger referenceMonth               = referenceComponents.month;
@@ -69,8 +67,7 @@
     return [NSString stringWithFormat:@"%ld年%ld月%ld日", referenceYear, (long)referenceMonth, (long)referenceDay];
 }
 
-+ (NSString *)getStringWithTimestamp:(NSTimeInterval)timestamp formatter:(NSString *)formatter
-{
++ (NSString *)getStringWithTimestamp:(NSTimeInterval)timestamp formatter:(NSString *)formatter {
     if ([NSString stringWithFormat:@"%@", @(timestamp)].length == 13) {
         timestamp /= 1000.0f;
     }

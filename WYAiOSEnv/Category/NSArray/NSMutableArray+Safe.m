@@ -9,8 +9,7 @@
 #import "NSMutableArray+Safe.h"
 
 @implementation NSMutableArray (Safe)
-- (void)safeAddObject:(id)object
-{
+- (void)safeAddObject:(id)object {
     if (object == nil) {
         return;
     } else {
@@ -18,8 +17,7 @@
     }
 }
 
-- (void)safeInsertObject:(id)object atIndex:(NSUInteger)index
-{
+- (void)safeInsertObject:(id)object atIndex:(NSUInteger)index {
     if (object == nil) {
         return;
     } else if (index > self.count) {
@@ -29,8 +27,7 @@
     }
 }
 
-- (void)safeInsertObjects:(NSArray *)objects atIndexes:(NSIndexSet *)indexs
-{
+- (void)safeInsertObjects:(NSArray *)objects atIndexes:(NSIndexSet *)indexs {
     NSUInteger firstIndex = indexs.firstIndex;
     if (indexs == nil) {
         return;
@@ -41,8 +38,7 @@
     }
 }
 
-- (void)safeRemoveObjectAtIndex:(NSUInteger)index
-{
+- (void)safeRemoveObjectAtIndex:(NSUInteger)index {
     if (index >= self.count) {
         return;
     } else {
@@ -50,8 +46,7 @@
     }
 }
 
-- (void)safeRemoveObjectsInRange:(NSRange)range
-{
+- (void)safeRemoveObjectsInRange:(NSRange)range {
     NSUInteger location = range.location;
     NSUInteger length   = range.length;
     if (location + length > self.count) {

@@ -18,29 +18,25 @@
 
 @implementation NavExampleViewController
 #pragma mark ======= system interface
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
 
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 #pragma mark ======= Lazy loading
-- (NSArray *)dataSources
-{
+- (NSArray *)dataSources {
     if (_dataSources == nil) {
         _dataSources = @[ @"设置标题", @"设置标题字体颜色", @"设置标题字体大小", @"导航栏背景色", @"背景图片", @"添加单个右侧文字按钮", @"设置单个按钮字体大小", @"添加右侧多个文字按钮", @"单个图片右侧按钮", @"多个图片右侧按钮" ];
     }
     return _dataSources;
 }
-- (UITableView *)tableView
-{
+- (UITableView *)tableView {
     if (_tableView == nil) {
         _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, ScreenWidth, ScreenHeight)];
         _tableView.delegate   = self;
@@ -53,16 +49,13 @@
 }
 
 #pragma mark ======= UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSources.count;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:NAV_CELLID];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NAV_CELLID];
@@ -72,8 +65,7 @@
     return cell;
 }
 #pragma mark ======= UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ChangeNavBarController * vc = [[ChangeNavBarController alloc] init];
 
     switch (indexPath.row) {

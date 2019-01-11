@@ -20,29 +20,25 @@
 
 @implementation NetWorkExampleViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.sectionTitleArray = @[ @"上传", @"下载" ];
     [self.view addSubview:self.tableView];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (NSArray *)dataSources
-{
+- (NSArray *)dataSources {
     if (_dataSources == nil) {
         _dataSources = @[ @[ @"上传图片", @"上传视频", @"上传文件" ], @[ @"下载单个文件", @"下载多个文件" ] ];
     }
     return _dataSources;
 }
-- (UITableView *)tableView
-{
+- (UITableView *)tableView {
     if (_tableView == nil) {
         _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
         _tableView.delegate   = self;
@@ -54,16 +50,13 @@
     return _tableView;
 }
 #pragma mark ======= UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSources.count;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.dataSources[section] count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:NetWork];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NetWork];
@@ -73,8 +66,7 @@
     cell.textLabel.text = array[indexPath.row];
     return cell;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel * label       = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     label.text            = self.sectionTitleArray[section];
     label.textColor       = [UIColor blackColor];
@@ -82,8 +74,7 @@
     return label;
 }
 #pragma mark ======= UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NetWorkViewController * vc = [[NetWorkViewController alloc] init];
     vc.section                 = indexPath.section;
     if (indexPath.section == 0) {

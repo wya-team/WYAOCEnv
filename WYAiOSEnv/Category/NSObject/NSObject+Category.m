@@ -16,13 +16,11 @@
 @implementation NSObject (Category)
 static char associatedObjectNamesKey;
 
-- (void)setAssociatedObjectNames:(NSMutableArray *)associatedObjectNames
-{
+- (void)setAssociatedObjectNames:(NSMutableArray *)associatedObjectNames {
     objc_setAssociatedObject(self, &associatedObjectNamesKey, associatedObjectNames, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSMutableArray *)associatedObjectNames
-{
+- (NSMutableArray *)associatedObjectNames {
     NSMutableArray * array = objc_getAssociatedObject(self, &associatedObjectNamesKey);
     if (!array) {
         array = [NSMutableArray array];
@@ -31,30 +29,25 @@ static char associatedObjectNamesKey;
     return array;
 }
 
-- (void)objc_setAssociatedObject:(NSString *)propertyName value:(id)value policy:(objc_AssociationPolicy)policy
-{
+- (void)objc_setAssociatedObject:(NSString *)propertyName value:(id)value policy:(objc_AssociationPolicy)policy {
     objc_setAssociatedObject(self, (__bridge objc_objectptr_t)propertyName, value, policy);
     [self.associatedObjectNames addObject:propertyName];
 }
 
-- (id)objc_getAssociatedObject:(NSString *)propertyName
-{
+- (id)objc_getAssociatedObject:(NSString *)propertyName {
     return objc_getAssociatedObject(self, (__bridge objc_objectptr_t)propertyName);
 }
 
-- (void)objc_removeAssociatedObjects
-{
+- (void)objc_removeAssociatedObjects {
     [self.associatedObjectNames removeAllObjects];
     objc_removeAssociatedObjects(self);
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     NSLog(@"setValue %@ forUndefinedKey %@", value, key);
 }
 
-- (void)setNilValueForKey:(NSString *)key
-{
+- (void)setNilValueForKey:(NSString *)key {
     NSLog(@"setNilValue forKey %@", key);
 }
 
@@ -63,8 +56,7 @@ static char associatedObjectNamesKey;
  *
  *    @return Properties数组
  */
-- (NSArray *)getProperties
-{
+- (NSArray *)getProperties {
     NSMutableArray * props = [NSMutableArray array];
     unsigned int outCount, i;
     Class targetClass = [self class];
@@ -83,8 +75,7 @@ static char associatedObjectNamesKey;
 }
 
 /* 获取对象的所有方法 */
-- (void)printMothList
-{
+- (void)printMothList {
     unsigned int mothCout_f = 0;
     Method * mothList_f     = class_copyMethodList([self class], &mothCout_f);
     for (int i = 0; i < mothCout_f; i++) {
@@ -101,34 +92,29 @@ static char associatedObjectNamesKey;
     free(mothList_f);
 }
 
-+ (NSString *)version
-{
++ (NSString *)version {
     NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString * app_Version        = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     return app_Version;
 }
 
-+ (NSInteger)build
-{
++ (NSInteger)build {
     NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString * app_build          = [infoDictionary objectForKey:@"CFBundleVersion"];
     return [app_build integerValue];
 }
 
-+ (NSString *)identifier
-{
++ (NSString *)identifier {
     NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString * bundleIdentifier   = [infoDictionary objectForKey:@"CFBundleIdentifier"];
     return bundleIdentifier;
 }
 
-+ (NSString *)currentLanguage
-{
++ (NSString *)currentLanguage {
     return [[NSLocale preferredLanguages] firstObject];
 }
 
-+ (NSString *)deviceModel
-{
++ (NSString *)deviceModel {
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString * deviceModel = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
@@ -206,17 +192,14 @@ static char associatedObjectNamesKey;
 
     return deviceModel;
 }
-- (void)setTimer:(dispatch_source_t)timer
-{
+- (void)setTimer:(dispatch_source_t)timer {
     objc_setAssociatedObject(self, @selector(timer), timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (dispatch_source_t)timer
-{
+- (dispatch_source_t)timer {
     return objc_getAssociatedObject(self, @selector(timer));
 }
-- (void)countDownTime:(NSUInteger)time countDownBlock:(TYNCountDownBlock)countDownBlock outTimeBlock:(TYNFinishBlock)finishBlock
-{
+- (void)countDownTime:(NSUInteger)time countDownBlock:(TYNCountDownBlock)countDownBlock outTimeBlock:(TYNFinishBlock)finishBlock {
     __block NSUInteger second = time;
 
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));

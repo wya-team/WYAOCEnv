@@ -9,8 +9,7 @@
 #import "NSMutableString+Safe.h"
 
 @implementation NSMutableString (Safe)
-- (void)safeInsertString:(NSString *)aString atIndex:(NSUInteger)loc
-{
+- (void)safeInsertString:(NSString *)aString atIndex:(NSUInteger)loc {
     if (aString == nil) {
         return;
     } else if (loc > self.length) {
@@ -20,8 +19,7 @@
     }
 }
 
-- (void)safeAppendString:(NSString *)aString
-{
+- (void)safeAppendString:(NSString *)aString {
     if (aString == nil) {
         return;
     } else {
@@ -29,8 +27,7 @@
     }
 }
 
-- (void)safeSetString:(NSString *)aString
-{
+- (void)safeSetString:(NSString *)aString {
     if (aString == nil) {
         return;
     } else {
@@ -38,8 +35,7 @@
     }
 }
 
-- (NSUInteger)safeReplaceOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options range:(NSRange)searchRange
-{
+- (NSUInteger)safeReplaceOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options range:(NSRange)searchRange {
     NSUInteger location = searchRange.location;
     NSUInteger length   = searchRange.length;
 

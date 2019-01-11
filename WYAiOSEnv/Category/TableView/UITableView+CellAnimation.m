@@ -9,37 +9,44 @@
 #import "UITableView+CellAnimation.h"
 
 @implementation UITableView (CellAnimation)
-- (void)moveAnimation
-{
+- (void)moveAnimation {
     NSArray * cells = self.visibleCells;
     for (int i = 0; i < cells.count; i++) {
         CGFloat totalTime      = 0.4;
         UITableViewCell * cell = [self.visibleCells objectAtIndex:i];
         cell.transform         = CGAffineTransformMakeTranslation(-ScreenWidth, 0);
-        [UIView animateWithDuration:0.4 delay:i * (totalTime / cells.count) usingSpringWithDamping:0.7 initialSpringVelocity:1 / 0.7 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.4
+            delay:i * (totalTime / cells.count)
+            usingSpringWithDamping:0.7
+            initialSpringVelocity:1 / 0.7
+            options:UIViewAnimationOptionCurveEaseIn
+            animations:^{
+                cell.transform = CGAffineTransformIdentity;
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)alphaAnimation
-{
+- (void)alphaAnimation {
     NSArray * cells = self.visibleCells;
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell = [self.visibleCells objectAtIndex:i];
         cell.alpha             = 0.0;
-        [UIView animateWithDuration:0.3 delay:i * 0.05 options:0 animations:^{
-            cell.alpha = 1.0;
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.3
+            delay:i * 0.05
+            options:0
+            animations:^{
+                cell.alpha = 1.0;
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)fallAnimation
-{
+- (void)fallAnimation {
     NSArray * cells = self.visibleCells;
 
     NSTimeInterval totalTime = 0.8;
@@ -47,16 +54,19 @@
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell = [self.visibleCells objectAtIndex:i];
         cell.transform         = CGAffineTransformMakeTranslation(0, -ScreenHeight);
-        [UIView animateWithDuration:0.3 delay:(cells.count - i) * (totalTime / cells.count) options:0 animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.3
+            delay:(cells.count - i) * (totalTime / cells.count)
+            options:0
+            animations:^{
+                cell.transform = CGAffineTransformIdentity;
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)shakeAnimation
-{
+- (void)shakeAnimation {
     NSArray * cells = self.visibleCells;
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell = [cells objectAtIndex:i];
@@ -65,33 +75,41 @@
         } else {
             cell.transform = CGAffineTransformMakeTranslation(ScreenWidth, 0);
         }
-        [UIView animateWithDuration:0.4 delay:i * 0.03 usingSpringWithDamping:0.75 initialSpringVelocity:1 / 0.75 options:0 animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.4
+            delay:i * 0.03
+            usingSpringWithDamping:0.75
+            initialSpringVelocity:1 / 0.75
+            options:0
+            animations:^{
+                cell.transform = CGAffineTransformIdentity;
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)overTurnAnimation
-{
+- (void)overTurnAnimation {
     NSArray * cells = self.visibleCells;
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell   = [cells objectAtIndex:i];
         cell.layer.opacity       = 0.0;
         cell.layer.transform     = CATransform3DMakeRotation(M_PI, 1, 0, 0);
         NSTimeInterval totalTime = 0.7;
-        [UIView animateWithDuration:0.3 delay:i * (totalTime / cells.count) options:0 animations:^{
-            cell.layer.opacity   = 1.0;
-            cell.layer.transform = CATransform3DIdentity;
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.3
+            delay:i * (totalTime / cells.count)
+            options:0
+            animations:^{
+                cell.layer.opacity   = 1.0;
+                cell.layer.transform = CATransform3DIdentity;
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)toTopAnimation
-{
+- (void)toTopAnimation {
     NSArray * cells = self.visibleCells;
 
     NSTimeInterval totalTime = 0.8;
@@ -99,16 +117,19 @@
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell = [self.visibleCells objectAtIndex:i];
         cell.transform         = CGAffineTransformMakeTranslation(0, ScreenHeight);
-        [UIView animateWithDuration:0.35 delay:i * (totalTime / cells.count) options:UIViewAnimationOptionCurveEaseOut animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.35
+            delay:i * (totalTime / cells.count)
+            options:UIViewAnimationOptionCurveEaseOut
+            animations:^{
+                cell.transform = CGAffineTransformIdentity;
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)springListAnimation
-{
+- (void)springListAnimation {
     NSArray * cells = self.visibleCells;
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell   = [cells objectAtIndex:i];
@@ -116,30 +137,35 @@
         cell.layer.transform     = CATransform3DMakeTranslation(0, -ScreenHeight, 20);
         NSTimeInterval totalTime = 1.0;
 
-        [UIView animateWithDuration:0.4 delay:i * (totalTime / cells.count) usingSpringWithDamping:0.65 initialSpringVelocity:1 / 0.65 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            cell.layer.opacity   = 1.0;
-            cell.layer.transform = CATransform3DMakeTranslation(0, 0, 20);
-        } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.4
+            delay:i * (totalTime / cells.count)
+            usingSpringWithDamping:0.65
+            initialSpringVelocity:1 / 0.65
+            options:UIViewAnimationOptionCurveEaseIn
+            animations:^{
+                cell.layer.opacity   = 1.0;
+                cell.layer.transform = CATransform3DMakeTranslation(0, 0, 20);
+            }
+            completion:^(BOOL finished){
 
-        }];
+            }];
     }
 }
 
-- (void)shrinkToTopAnimation
-{
+- (void)shrinkToTopAnimation {
     NSArray * cells = self.visibleCells;
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell = [cells objectAtIndex:i];
         CGRect rect            = [cell convertRect:cell.bounds fromView:self];
         cell.transform         = CGAffineTransformMakeTranslation(0, -rect.origin.y);
-        [UIView animateWithDuration:0.5 animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        }];
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             cell.transform = CGAffineTransformIdentity;
+                         }];
     }
 }
 
-- (void)layDownAnimation
-{
+- (void)layDownAnimation {
     NSArray * cells          = self.visibleCells;
     NSMutableArray * rectArr = [[NSMutableArray alloc] init];
     for (int i = 0; i < cells.count; i++) {
@@ -154,16 +180,17 @@
     for (int i = 0; i < cells.count; i++) {
         UITableViewCell * cell = [cells objectAtIndex:i];
         CGRect rect            = [[rectArr objectAtIndex:i] CGRectValue];
-        [UIView animateWithDuration:(totalTime / cells.count) * i animations:^{
-            cell.frame = rect;
-        } completion:^(BOOL finished) {
-            cell.layer.transform = CATransform3DIdentity;
-        }];
+        [UIView animateWithDuration:(totalTime / cells.count) * i
+            animations:^{
+                cell.frame = rect;
+            }
+            completion:^(BOOL finished) {
+                cell.layer.transform = CATransform3DIdentity;
+            }];
     }
 }
 
-- (void)roteAnimation
-{
+- (void)roteAnimation {
     NSArray * cells               = self.visibleCells;
     CABasicAnimation * animation  = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
     animation.fromValue           = @(-M_PI);
@@ -178,11 +205,15 @@
         UITableViewCell * cell = [cells objectAtIndex:i];
 
         cell.alpha = 0.0;
-        [UIView animateWithDuration:0.1 delay:i * 0.25 options:0 animations:^{
-            cell.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            [cell.layer addAnimation:animation forKey:@"rotationYkey"];
-        }];
+        [UIView animateWithDuration:0.1
+            delay:i * 0.25
+            options:0
+            animations:^{
+                cell.alpha = 1.0;
+            }
+            completion:^(BOOL finished) {
+                [cell.layer addAnimation:animation forKey:@"rotationYkey"];
+            }];
     }
 }
 

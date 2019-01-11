@@ -13,8 +13,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
 
 @implementation BaseNetWorking
 
-+ (AFHTTPSessionManager *)AFManager
-{
++ (AFHTTPSessionManager *)AFManager {
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     // 超过时间
     manager.requestSerializer.timeoutInterval = kDefaultTimeoutInterval;
@@ -34,8 +33,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
 + (void)GetWithUrl:(NSString *)urlString
             Params:(NSMutableDictionary *)params
            Success:(Success)success
-              Fail:(Fail)fail
-{
+              Fail:(Fail)fail {
     AFHTTPSessionManager * manager = [self AFManager];
 
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
@@ -45,25 +43,28 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
         [dic setObject:token forKey:@"access_token"];
     }
 
-    [manager GET:urlString parameters:dic progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:urlString
+        parameters:dic
+        progress:^(NSProgress * _Nonnull downloadProgress) {
 
-    } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        }
+        success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
 
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        success(jsonObj);
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            success(jsonObj);
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }
+        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
-        fail(error.localizedDescription);
+            fail(error.localizedDescription);
 
-    }];
+        }];
 }
 
 + (void)PostWithUrl:(NSString *)urlString
              Params:(NSMutableDictionary *)params
             Success:(Success)success
-               Fail:(Fail)fail
-{
+               Fail:(Fail)fail {
     AFHTTPSessionManager * manager = [self AFManager];
 
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
@@ -73,19 +74,23 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
         [dic setObject:token forKey:@"access_token"];
     }
 
-    [manager POST:urlString parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:urlString
+        parameters:dic
+        progress:^(NSProgress * _Nonnull uploadProgress) {
 
-    } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        }
+        success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
 
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
-        success(jsonObj);
+            success(jsonObj);
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }
+        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
-        fail(error.localizedDescription);
+            fail(error.localizedDescription);
 
-    }];
+        }];
 }
 
 + (void)UploadImageWithUrl:(NSString *)urlString
@@ -96,8 +101,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
      ImageCompressionRatio:(float)ratio
                   progress:(Progress)progress
                    Success:(Success)success
-                      Fail:(Fail)fail
-{
+                      Fail:(Fail)fail {
     if (images.count == 0) {
         fail(@"上传图片个数不能小于1个");
         return;
@@ -105,44 +109,49 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
 
     AFHTTPSessionManager * manager = [self AFManager];
 
-    [manager POST:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+    [manager POST:urlString
+        parameters:params
+        constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
 
-        for (NSInteger i = 0; i < images.count; i++) {
-            UIImage * image = images[i];
+            for (NSInteger i = 0; i < images.count; i++) {
+                UIImage * image = images[i];
 
-            NSData * data;
-            NSString * imageType;
-            switch (type) {
-                case imageForPNG:
-                    data      = UIImagePNGRepresentation(image);
-                    imageType = @"image/png";
-                    break;
-                case imageForJPEG:
-                    data      = UIImageJPEGRepresentation(image, ratio);
-                    imageType = @"image/jpeg";
-                    break;
-                default:
-                    break;
+                NSData * data;
+                NSString * imageType;
+                switch (type) {
+                    case imageForPNG:
+                        data      = UIImagePNGRepresentation(image);
+                        imageType = @"image/png";
+                        break;
+                    case imageForJPEG:
+                        data      = UIImageJPEGRepresentation(image, ratio);
+                        imageType = @"image/jpeg";
+                        break;
+                    default:
+                        break;
+                }
+
+                [formData appendPartWithFileData:data name:@"Filedata" fileName:imageNames[i] mimeType:imageType];
             }
 
-            [formData appendPartWithFileData:data name:@"Filedata" fileName:imageNames[i] mimeType:imageType];
         }
+        progress:^(NSProgress * _Nonnull uploadProgress) {
 
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
+            progress(1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
 
-        progress(1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
+        }
+        success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
 
-    } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            success(jsonObj);
 
-        success(jsonObj);
+        }
+        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            fail(error.localizedDescription);
 
-        fail(error.localizedDescription);
-
-    }];
+        }];
 }
 
 + (void)UploadVideoWithUrl:(NSString *)urlString
@@ -151,8 +160,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
                 VideoNames:(NSArray *)videoNames
                   progress:(Progress)progress
                    Success:(Success)success
-                      Fail:(Fail)fail
-{
+                      Fail:(Fail)fail {
     if (videoPaths.count == 0) {
         fail(@"上传视频个数不能小于1个");
         return;
@@ -160,35 +168,40 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
 
     AFHTTPSessionManager * manager = [self AFManager];
 
-    [manager POST:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+    [manager POST:urlString
+        parameters:params
+        constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
 
-        for (NSInteger i = 0; i < videoPaths.count; i++) {
-            NSString * path = videoPaths[i];
+            for (NSInteger i = 0; i < videoPaths.count; i++) {
+                NSString * path = videoPaths[i];
 
-            NSError * error;
+                NSError * error;
 
-            [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"Filedata" fileName:videoNames[i] mimeType:@"application/octet-stream" error:&error];
-            if (error) {
-                fail(error.localizedDescription);
-                return;
+                [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"Filedata" fileName:videoNames[i] mimeType:@"application/octet-stream" error:&error];
+                if (error) {
+                    fail(error.localizedDescription);
+                    return;
+                }
             }
+
         }
+        progress:^(NSProgress * _Nonnull uploadProgress) {
 
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
+            progress(1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
 
-        progress(1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
+        }
+        success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
 
-    } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            success(jsonObj);
 
-        success(jsonObj);
+        }
+        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            fail(error.localizedDescription);
 
-        fail(error.localizedDescription);
-
-    }];
+        }];
 }
 
 + (void)UploadFileWithUrl:(NSString *)urlString
@@ -197,8 +210,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
                 FileNames:(NSArray *)fileNames
                  progress:(Progress)progress
                   Success:(Success)success
-                     Fail:(Fail)fail
-{
+                     Fail:(Fail)fail {
     if (filePaths.count == 0) {
         fail(@"上传文件个数不能小于1个");
         return;
@@ -206,35 +218,40 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
 
     AFHTTPSessionManager * manager = [self AFManager];
 
-    [manager POST:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+    [manager POST:urlString
+        parameters:params
+        constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
 
-        for (NSInteger i = 0; i < filePaths.count; i++) {
-            NSString * path = filePaths[i];
+            for (NSInteger i = 0; i < filePaths.count; i++) {
+                NSString * path = filePaths[i];
 
-            NSError * error;
+                NSError * error;
 
-            [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"Filedata" fileName:fileNames[i] mimeType:@"application/octet-stream" error:&error];
-            if (error) {
-                fail(error.localizedDescription);
-                return;
+                [formData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"Filedata" fileName:fileNames[i] mimeType:@"application/octet-stream" error:&error];
+                if (error) {
+                    fail(error.localizedDescription);
+                    return;
+                }
             }
+
         }
+        progress:^(NSProgress * _Nonnull uploadProgress) {
 
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
+            progress(1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
 
-        progress(1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
+        }
+        success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
 
-    } success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            success(jsonObj);
 
-        success(jsonObj);
+        }
+        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            fail(error.localizedDescription);
 
-        fail(error.localizedDescription);
-
-    }];
+        }];
 }
 
 + (NSURLSessionDownloadTask *)DownloadFileWithUrl:(NSString *)urlString
@@ -242,30 +259,32 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
                                          FilePath:(NSString *)filePath
                                          progress:(Progress)progress
                                           Success:(Success)success
-                                             Fail:(Fail)fail
-{
+                                             Fail:(Fail)fail {
     AFHTTPSessionManager * manager          = [self AFManager];
     urlString                               = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
     NSURLRequest * reuqest                  = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:reuqest progress:^(NSProgress * _Nonnull downloadProgress) {
-        float number = 1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;
-        NSLog(@"number==%f", number);
-        progress(number);
+    NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:reuqest
+        progress:^(NSProgress * _Nonnull downloadProgress) {
+            float number = 1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;
+            NSLog(@"number==%f", number);
+            progress(number);
 
-    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        return [NSURL fileURLWithPath:filePath];
-    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-
-        NSLog(@"jsonobj==%@", response);
-        NSLog(@"error==%@", error);
-        NSLog(@"filep==%@", filePath);
-        if (error) {
-            fail(@"下载失败");
-        } else {
-            success(@"下载成功");
         }
+        destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+            return [NSURL fileURLWithPath:filePath];
+        }
+        completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
 
-    }];
+            NSLog(@"jsonobj==%@", response);
+            NSLog(@"error==%@", error);
+            NSLog(@"filep==%@", filePath);
+            if (error) {
+                fail(@"下载失败");
+            } else {
+                success(@"下载成功");
+            }
+
+        }];
 
     return downloadTask;
 }

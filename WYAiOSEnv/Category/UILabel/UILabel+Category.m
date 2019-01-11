@@ -10,8 +10,7 @@
 
 @implementation UILabel (Category)
 
-- (void)alignTop
-{
+- (void)alignTop {
     CGSize fontSize = [self.text sizeWithAttributes:@{NSFontAttributeName : self.font}];
     //    控件的高度除以一行文字的高度
     int num = self.frame.size.height / fontSize.height;
@@ -24,8 +23,7 @@
     }
 }
 
-- (void)alignBottom
-{
+- (void)alignBottom {
     CGSize fontSize = [self.text sizeWithAttributes:@{NSFontAttributeName : self.font}];
     //控件的高度除以一行文字的高度
     int num = self.frame.size.height / fontSize.height;
@@ -38,8 +36,7 @@
     }
 }
 
-- (void)changeLineSpaceForLabelWithSpace:(float)space text:(NSString *)labelText
-{
+- (void)changeLineSpaceForLabelWithSpace:(float)space text:(NSString *)labelText {
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:labelText];
     NSMutableParagraphStyle * paragraphStyle     = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:space];
@@ -48,8 +45,7 @@
     [self sizeToFit];
 }
 
-- (void)changeWordSpaceForLabelWithSpace:(float)space
-{
+- (void)changeWordSpaceForLabelWithSpace:(float)space {
     NSString * labelText                         = self.text;
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:labelText attributes:@{ NSKernAttributeName : @(space) }];
     NSMutableParagraphStyle * paragraphStyle     = [[NSMutableParagraphStyle alloc] init];
@@ -58,8 +54,7 @@
     [self sizeToFit];
 }
 
-- (void)changeSpaceForLabelWithLineSpace:(float)lineSpace WordSpace:(float)wordSpace
-{
+- (void)changeSpaceForLabelWithLineSpace:(float)lineSpace WordSpace:(float)wordSpace {
     NSString * labelText                         = self.text;
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:labelText attributes:@{ NSKernAttributeName : @(wordSpace) }];
     NSMutableParagraphStyle * paragraphStyle     = [[NSMutableParagraphStyle alloc] init];
@@ -69,8 +64,7 @@
     [self sizeToFit];
 }
 
-+ (CGFloat)getHeightByWidth:(CGFloat)width title:(NSString *)title font:(UIFont *)font
-{
++ (CGFloat)getHeightByWidth:(CGFloat)width title:(NSString *)title font:(UIFont *)font {
     UILabel * label     = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 0)];
     label.text          = title;
     label.font          = font;
@@ -80,8 +74,7 @@
     return height;
 }
 
-+ (CGFloat)getWidthWithTitle:(NSString *)title font:(UIFont *)font
-{
++ (CGFloat)getWidthWithTitle:(NSString *)title font:(UIFont *)font {
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1000, 0)];
     label.text      = title;
     label.font      = font;

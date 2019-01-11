@@ -14,8 +14,7 @@
 
 @implementation ChangeNavBarController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     if ([self.navStyle isEqualToString:@"创建多个文字按钮"]) {
         [self createNavigationItemsRightBarButtonWithNormalTitle:@[ @"按钮1", @"按钮2" ]];
@@ -30,8 +29,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -42,8 +40,7 @@
 
  @param sedner sender
  */
-- (void)navRightButtonClicked:(UIButton *)sedner
-{
+- (void)navRightButtonClicked:(UIButton *)sedner {
     NSLog(@"搜索");
 }
 /**
@@ -51,8 +48,7 @@
 
  @param sender sender
  */
-- (void)customRightButtonsClicked:(UIButton *)sender
-{
+- (void)customRightButtonsClicked:(UIButton *)sender {
     if (sender.titleLabel.text) {
         NSLog(@"%@", sender.titleLabel.text);
     } else {

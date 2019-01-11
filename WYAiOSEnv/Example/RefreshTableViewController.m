@@ -22,8 +22,7 @@ static const CGFloat MJDuration = 2.0;
 @implementation RefreshTableViewController
 #pragma mark - 示例代码
 #pragma mark UITableView + 下拉刷新 默认
-- (void)example01
-{
+- (void)example01 {
     __weak __typeof(self) weakSelf = self;
 
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
@@ -36,8 +35,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 下拉刷新 隐藏时间
-- (void)example02
-{
+- (void)example02 {
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 
@@ -55,8 +53,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 下拉刷新 隐藏状态和时间
-- (void)example03
-{
+- (void)example03 {
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 
@@ -74,8 +71,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 下拉刷新 自定义文字
-- (void)example04
-{
+- (void)example04 {
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 
@@ -99,8 +95,7 @@ static const CGFloat MJDuration = 2.0;
     self.tableView.mj_header = header;
 }
 #pragma mark UITableView + 上拉刷新 默认
-- (void)example05
-{
+- (void)example05 {
     [self example01];
 
     __weak __typeof(self) weakSelf = self;
@@ -113,8 +108,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 上拉刷新 隐藏刷新状态的文字
-- (void)example06
-{
+- (void)example06 {
     [self example01];
 
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
@@ -131,8 +125,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 上拉刷新 全部加载完毕
-- (void)example07
-{
+- (void)example07 {
     [self example01];
 
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadLastData方法）
@@ -142,15 +135,13 @@ static const CGFloat MJDuration = 2.0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"恢复数据加载" style:UIBarButtonItemStyleDone target:self action:@selector(reset)];
 }
 
-- (void)reset
-{
+- (void)reset {
     [self.tableView.mj_footer setRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [self.tableView.mj_footer resetNoMoreData];
 }
 
 #pragma mark UITableView + 上拉刷新 禁止自动加载
-- (void)example08
-{
+- (void)example08 {
     [self example01];
 
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
@@ -164,8 +155,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 上拉刷新 自定义文字
-- (void)example09
-{
+- (void)example09 {
     [self example01];
 
     // 添加默认的上拉刷新
@@ -188,8 +178,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark UITableView + 上拉刷新 加载后隐藏
-- (void)example10
-{
+- (void)example10 {
     [self example01];
 
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadOnceData方法）
@@ -197,8 +186,7 @@ static const CGFloat MJDuration = 2.0;
 }
 #pragma mark - 数据处理相关
 #pragma mark 下拉刷新数据
-- (void)loadNewData
-{
+- (void)loadNewData {
     // 1.添加假数据
     for (int i = 0; i < 5; i++) {
         [self.data insertObject:MJRandomData atIndex:0];
@@ -216,8 +204,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark 上拉加载更多数据
-- (void)loadMoreData
-{
+- (void)loadMoreData {
     // 1.添加假数据
     for (int i = 0; i < 5; i++) {
         [self.data addObject:MJRandomData];
@@ -235,8 +222,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark 加载最后一份数据
-- (void)loadLastData
-{
+- (void)loadLastData {
     // 1.添加假数据
     for (int i = 0; i < 5; i++) {
         [self.data addObject:MJRandomData];
@@ -254,8 +240,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark 只加载一次数据
-- (void)loadOnceData
-{
+- (void)loadOnceData {
     // 1.添加假数据
     for (int i = 0; i < 5; i++) {
         [self.data addObject:MJRandomData];
@@ -272,8 +257,7 @@ static const CGFloat MJDuration = 2.0;
     });
 }
 
-- (NSMutableArray *)data
-{
+- (NSMutableArray *)data {
     if (!_data) {
         self.data = [NSMutableArray array];
         for (int i = 0; i < 5; i++) {
@@ -284,8 +268,7 @@ static const CGFloat MJDuration = 2.0;
 }
 
 #pragma mark - 其他
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -333,13 +316,11 @@ static const CGFloat MJDuration = 2.0;
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.data.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * ID   = @"cell";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {

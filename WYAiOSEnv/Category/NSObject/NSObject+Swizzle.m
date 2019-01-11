@@ -10,8 +10,7 @@
 #import <objc/runtime.h>
 
 @implementation NSObject (Swizzle)
-+ (void)overrideInstanceMethod:(SEL)origSelector withInstanceMethod:(SEL)newSelector
-{
++ (void)overrideInstanceMethod:(SEL)origSelector withInstanceMethod:(SEL)newSelector {
     Class class = [self class];
 
     Method originalMethod = class_getInstanceMethod(class, origSelector);
@@ -40,8 +39,7 @@
     }
 }
 
-+ (void)overrideClassMethod:(SEL)origSelector withClassMethod:(SEL)newSelector
-{
++ (void)overrideClassMethod:(SEL)origSelector withClassMethod:(SEL)newSelector {
     Class class = [self class];
 
     Method originalMethod = class_getClassMethod(class, origSelector);
@@ -61,8 +59,7 @@
     }
 }
 
-+ (void)exchangeInstanceMethod:(SEL)origSelector withInstanceMethod:(SEL)newSelector
-{
++ (void)exchangeInstanceMethod:(SEL)origSelector withInstanceMethod:(SEL)newSelector {
     Class class = [self class];
 
     Method originalMethod = class_getInstanceMethod(class, origSelector);
@@ -82,8 +79,7 @@
     }
 }
 
-+ (void)exchangeClassMethod:(SEL)origSelector withClassMethod:(SEL)newSelector
-{
++ (void)exchangeClassMethod:(SEL)origSelector withClassMethod:(SEL)newSelector {
     Class class = [self class];
 
     Method originalMethod = class_getClassMethod(class, origSelector);

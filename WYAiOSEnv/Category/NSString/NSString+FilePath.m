@@ -10,37 +10,31 @@
 
 @implementation NSString (FilePath)
 
-+ (NSString *)homePath
-{
++ (NSString *)homePath {
     return NSHomeDirectory();
 }
 
-+ (NSString *)appPath
-{
++ (NSString *)appPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
 
-+ (NSString *)docPath
-{
++ (NSString *)docPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
 
-+ (NSString *)libPrefPath
-{
++ (NSString *)libPrefPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Preference"];
 }
 
-+ (NSString *)libCachePath
-{
++ (NSString *)libCachePath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Caches"];
 }
 
-+ (NSString *)tmpPath
-{
++ (NSString *)tmpPath {
     return [NSHomeDirectory() stringByAppendingFormat:@"/tmp"];
 }
 

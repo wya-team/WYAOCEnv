@@ -20,20 +20,17 @@
 
 @implementation RootViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self createTabBarModelArray];
     self.tabBar.translucent = NO;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 #pragma mark =========== createModel
-- (void)createTabBarModelArray
-{
+- (void)createTabBarModelArray {
     NSMutableArray * array           = [NSMutableArray array];
     RootControllerModel * item1Model = [RootControllerModel modelWithTitle:@"首页"
                                                                  className:@"WYAHomeController"
@@ -51,8 +48,7 @@
 }
 
 #pragma mark - UI -
-- (void)creatViewControllers
-{
+- (void)creatViewControllers {
     NSMutableArray * viewControllers = [NSMutableArray array];
     for (RootControllerModel * model in _tabBarModelArray) {
         NSString * className              = model.className;
@@ -77,23 +73,20 @@
     }
 }
 
-- (void)setTabBarTitleFont:(CGFloat)tabBarTitleFont
-{
+- (void)setTabBarTitleFont:(CGFloat)tabBarTitleFont {
     _tabBarTitleFont = tabBarTitleFont;
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.normalTitleColor == nil ? [UIColor grayColor] : self.normalTitleColor,
                                                          NSFontAttributeName : FONT(tabBarTitleFont) }
                                              forState:UIControlStateNormal];
 }
-- (void)setNormalTitleColor:(UIColor *)normalTitleColor
-{
+- (void)setNormalTitleColor:(UIColor *)normalTitleColor {
     _normalTitleColor = normalTitleColor;
     CGFloat fontSize  = self.tabBarTitleFont == 0 ? 14 : self.tabBarTitleFont;
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : _normalTitleColor,
                                                          NSFontAttributeName : FONT(fontSize) }
                                              forState:UIControlStateNormal];
 }
-- (void)setSelectedTitleColor:(UIColor *)selectedTitleColor
-{
+- (void)setSelectedTitleColor:(UIColor *)selectedTitleColor {
     _selectedTitleColor = selectedTitleColor;
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_selectedTitleColor, NSForegroundColorAttributeName, nil] forState:(UIControlStateSelected)];
 }
