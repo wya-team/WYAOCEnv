@@ -36,7 +36,7 @@ ContinuationIndentWidth|代码块换行的缩进距离|20?
 IndentCaseLabels|缩进case标签|true、false
 IndentWidth|缩进距离|4
 KeepEmptyLinesAtTheStartOfBlocks|保留在块开始处的空行|true、false
-Language|格式模板（默认推荐Cpp、Objc可能会出现意想不到的问题）|None、Cpp、ObjC
+Language|格式模板（Objc可能会出现意想不到的问题）|None、Cpp、ObjC
 MaxEmptyLinesToKeep|连续空行的数量|1
 NamespaceIndentation|命名空间缩进|None, Inner(缩进嵌套的命名空间中的内容), All
 ObjCBinPackProtocolList|控制代理是否折行显示|值暂未知
