@@ -6,9 +6,9 @@
 //  Copyright © 2018年 WeiYiAn. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface RefreshTableViewController : UITableViewController
+@interface RefreshTableViewController : BaseViewController
 @property (nonatomic, assign) NSInteger section;
 @property (nonatomic, assign) NSInteger index;
 @end

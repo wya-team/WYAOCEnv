@@ -8,335 +8,246 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
-/**
- 导航栏的底部横线
- */
-@property (nonatomic, strong) UIView * navLineView;
-/**
- 导航栏右侧按钮
- */
-@property (nonatomic, strong) UIButton * rightButton;
+@interface BaseViewController () <WYANavBarDelegate, UIGestureRecognizerDelegate>
 
-/**
- 导航栏左侧按钮
- */
-@property (nonatomic, strong) UIButton * leftButton;
-/**
- 导航栏标题
- */
-@property (nonatomic, strong) UILabel * titleLabel;
 @end
 
 @implementation BaseViewController
-- (instancetype)init {
-    if (self = [super init]) {
-#pragma mark ======= setNav
 
-        [self addtitleWithName:@"微一案"];
-
-        self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
-
-        [self.navigationController.navigationBar addSubview:self.navLineView];
-
-        [self.navigationController.navigationBar setTranslucent:NO];
-
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    }
-    return self;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"hidden==%d", self.navigationController.navigationBarHidden);
+    NSLog(@"h==%d", self.navigationController.navigationBar.hidden);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 判断是否需要加返回按钮
-    if ([self.navigationController.viewControllers indexOfObject:self] > 0) {
-        [self setupLeftBarButton];
-    }
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor wya_bgColor];
+    [self addCustomNavBar];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark ======= private
+- (void)addCustomNavBar {
+    NSArray * arrViewControllers = self.navigationController.viewControllers;
+    if ([arrViewControllers indexOfObject:self] > 0) {
+        [self.navBar wya_goBackButtonWithImage:@"返回"];
+    }
+    [self.view addSubview:self.navBar];
+}
+#pragma mark---------- 版本对比
+- (void)wya_versionUpdateAlertView {
+    // 获取appStore版本号
+    NSString * url =
+    [[NSString alloc] initWithFormat:@"http://itunes.apple.com/lookup?id=%@", @"1436011775"];
+    [self Postpath:url]; // 获取版本号
 }
 
-- (void)solveableViewOverrides:(UITableView * _Nonnull)tableView {
-    tableView.autoresizingMask  = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+- (void)Postpath:(NSString *)path {
+    NSURL * url = [NSURL URLWithString:path];
+    NSMutableURLRequest * request =
+    [NSMutableURLRequest requestWithURL:url
+                            cachePolicy:NSURLRequestReloadIgnoringCacheData
+                        timeoutInterval:10];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    NSOperationQueue * queue = [NSOperationQueue new];
+    
+    [NSURLConnection
+     sendAsynchronousRequest:request
+     queue:queue
+     completionHandler:^(NSURLResponse * response, NSData * data, NSError * error) {
+         NSMutableDictionary * receiveStatusDic = [[NSMutableDictionary alloc] init];
+         if (data) {
+             NSDictionary * receiveDic =
+             [NSJSONSerialization JSONObjectWithData:data
+                                             options:NSJSONReadingMutableLeaves
+                                               error:nil];
+             if ([[receiveDic valueForKey:@"resultCount"] intValue] > 0) {
+                 [receiveStatusDic setValue:@"1" forKey:@"status"];
+                 [receiveStatusDic setValue:[[[receiveDic valueForKey:@"results"]
+                                              objectAtIndex:0] valueForKey:@"version"]
+                                     forKey:@"version"];
+                 
+             } else {
+                 [receiveStatusDic setValue:@"-1" forKey:@"status"];
+             }
+         } else {
+             [receiveStatusDic setValue:@"-1" forKey:@"status"];
+         }
+         
+         [self
+          performSelectorOnMainThread:@selector(compareCurVersionNumWithAppStoreNumber:)
+          withObject:receiveStatusDic
+          waitUntilDone:NO];
+     }];
 }
 
-#pragma mark ======= 初始化配置对象
-- (UIView *)navLineView {
-    if (_navLineView == nil) {
-        _navLineView                 = [[UIView alloc] initWithFrame:CGRectMake(0, WYANavBarHeight, ScreenWidth, 1)];
-        _navLineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+- (void)compareCurVersionNumWithAppStoreNumber:(id)appStoreVersion {
+    NSString * appStoreNum        = appStoreVersion[@"version"]; //线上版本号
+    NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString * app_Version =
+    [infoDictionary objectForKey:@"CFBundleShortVersionString"]; // 当前版本号
+    NSInteger isShowAlertView =
+    [NSString wya_compareVersion:appStoreNum
+                              to:app_Version]; // 对比版本号
+    NSString * msg = [NSString
+                      stringWithFormat:
+                      @"当前版本为%@,新版本%@发布，为不影响您的使用请及时更新",
+                      app_Version, appStoreNum];
+    if (isShowAlertView == 1) {
+        UIAlertController * alert =
+        [UIAlertController alertControllerWithTitle:@"更新提示"
+                                            message:msg
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                                style:UIAlertActionStyleDestructive
+                                                              handler:^(UIAlertAction * action){
+                                                                  
+                                                              }];
+        UIAlertAction * defaultAction = [UIAlertAction
+                                         actionWithTitle:@"确定"
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * action) {
+                                             // 跳转AppStore更新
+                                             NSString * webLink = @"https://itunes.apple.com/cn/app/id1436011775";
+                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:webLink]];
+                                         }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
-    return _navLineView;
-}
-- (UIButton *)rightButton {
-    if (_rightButton == nil) {
-        _rightButton                          = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightButton.titleLabel.font          = FONT(13);
-        _rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_rightButton setTitleColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateHighlighted];
-        [_rightButton addTarget:self action:@selector(navRightButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _rightButton;
 }
 
-- (UIButton *)leftButton {
-    if (_leftButton == nil) {
-        _leftButton                          = [UIButton buttonWithType:UIButtonTypeCustom];
-        _leftButton.titleLabel.font          = FONT(13);
-        _leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_leftButton setTitleColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateHighlighted];
-        [_leftButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-        [_leftButton addTarget:self action:@selector(navLeftButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+#pragma mark - Getter -
+- (WYANavBar *)navBar {
+    if (!_navBar) {
+        _navBar = ({
+            WYANavBar * object     = [[WYANavBar alloc] init];
+            object.delegate        = self;
+            object.navTitle        = @"WYA移动端组件";
+            object.navTitleColor   = [UIColor wya_blackTitleColor];
+            object.backgroundColor = [UIColor wya_whiteColor];
+            object;
+        });
     }
-    return _rightButton;
+    return _navBar;
 }
-- (void)addtitleWithName:(NSString *)name {
-    _titleLabel                   = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200 * SizeAdapter, 44)];
-    _titleLabel.textColor         = [UIColor blackColor];
-    _titleLabel.font              = FONT(18);
-    _titleLabel.textAlignment     = NSTextAlignmentCenter;
-    self.navigationItem.titleView = _titleLabel;
-    _titleLabel.text              = name;
+
+#pragma mark ======= setter
+- (void)setHiddenNavBar:(BOOL)hiddenNavBar {
+    _hiddenNavBar = hiddenNavBar;
+    if (hiddenNavBar) {
+        self.navBar.hidden = YES;
+    } else {
+        self.navBar.hidden = NO;
+    }
 }
 - (void)setNavTitle:(NSString *)navTitle {
-    _navTitle        = navTitle;
-    _titleLabel.text = _navTitle;
-}
-#pragma mark ======= 自定义返回按钮
-#pragma mark - 自定义返回按钮
-- (void)setupLeftBarButton {
-    // 自定义 leftBarButtonItem ，UIImageRenderingModeAlwaysOriginal 防止图片被渲染
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-        initWithImage:[[UIImage imageNamed:@"返回"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                style:UIBarButtonItemStylePlain
-               target:self
-               action:@selector(leftBarButtonClick)];
-    // 防止返回手势失效
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
-}
-#pragma mark - 返回按钮的点击事件
-- (void)leftBarButtonClick {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark ======= 自定义添加右侧按钮
-
-- (void)createNavigationItemLeftBarButton {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftButton];
-}
-/************************************多个右侧按钮自定义创建方法******************************************/
-- (void)createNavigationItemsRightBarButtonWithNormalTitle:(NSArray<NSString *> *)normalTitles {
-    NSMutableArray * rightButtonArray = [NSMutableArray array];
-    for (int i = 0; i < normalTitles.count; i++) {
-        UIButton * customButton               = [UIButton buttonWithType:UIButtonTypeCustom];
-        customButton.titleLabel.font          = FONT(13);
-        customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [customButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [customButton setTitleColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateHighlighted];
-        customButton.tag = i;
-        [customButton addTarget:self action:@selector(customRightButtonsClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [customButton setTitle:normalTitles[i] forState:UIControlStateNormal];
-        [customButton sizeToFit];
-        UIBarButtonItem * customBtnItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
-
-        UIBarButtonItem * fixedSpaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedSpaceBarButtonItem.width             = self.itemsSpace * SizeAdapter;
-
-        [rightButtonArray addObject:customBtnItem];
-        [rightButtonArray addObject:fixedSpaceBarButtonItem];
-    }
-    [rightButtonArray removeLastObject];
-    self.navigationItem.rightBarButtonItems = [rightButtonArray copy];
-}
-
-- (void)createNavigationItemsRightBarButtonWithNormalTitles:(NSArray<NSString *> *)normalTitles normalColor:(NSArray<UIColor *> *)normalColors highlightedColor:(NSArray<UIColor *> *)highlightedColors {
-    NSMutableArray * rightButtonArray = [NSMutableArray array];
-    for (int i = 0; i < normalTitles.count; i++) {
-        UIButton * customButton               = [UIButton buttonWithType:UIButtonTypeCustom];
-        customButton.titleLabel.font          = FONT(13);
-        customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [customButton setTitleColor:normalColors[i] forState:UIControlStateNormal];
-        [customButton setTitleColor:highlightedColors[i] forState:UIControlStateHighlighted];
-        customButton.tag = i;
-        [customButton addTarget:self action:@selector(customRightButtonsClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [customButton setTitle:normalTitles[i] forState:UIControlStateNormal];
-        [customButton sizeToFit];
-        UIBarButtonItem * customBtnItem           = [[UIBarButtonItem alloc] initWithCustomView:customButton];
-        UIBarButtonItem * fixedSpaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedSpaceBarButtonItem.width             = self.itemsSpace * SizeAdapter;
-
-        [rightButtonArray addObject:customBtnItem];
-        [rightButtonArray addObject:fixedSpaceBarButtonItem];
-    }
-    [rightButtonArray removeLastObject];
-
-    self.navigationItem.rightBarButtonItems = [rightButtonArray copy];
-}
-
-- (void)createNavigationItemsRightBarButtonWithNormalTitles:(NSArray<NSString *> *)normalTitles normalColor:(NSArray<UIColor *> *)normalColors highlightedColor:(NSArray<UIColor *> *)highlightedColors titleFont:(NSArray<NSNumber *> *)fontNumbers {
-    NSMutableArray * rightButtonArray = [NSMutableArray array];
-    for (int i = 0; i < normalTitles.count; i++) {
-        UIButton * customButton               = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGFloat font                          = [fontNumbers[i] floatValue];
-        customButton.titleLabel.font          = FONT(font);
-        customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [customButton setTitleColor:normalColors[i] forState:UIControlStateNormal];
-        [customButton setTitleColor:highlightedColors[i] forState:UIControlStateHighlighted];
-        customButton.tag = i;
-        [customButton addTarget:self action:@selector(customRightButtonsClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [customButton setTitle:normalTitles[i] forState:UIControlStateNormal];
-        [customButton sizeToFit];
-        UIBarButtonItem * customBtnItem           = [[UIBarButtonItem alloc] initWithCustomView:customButton];
-        UIBarButtonItem * fixedSpaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedSpaceBarButtonItem.width             = self.itemsSpace * SizeAdapter;
-
-        [rightButtonArray addObject:customBtnItem];
-        [rightButtonArray addObject:fixedSpaceBarButtonItem];
-    }
-    [rightButtonArray removeLastObject];
-
-    self.navigationItem.rightBarButtonItems = [rightButtonArray copy];
-}
-- (void)createNavigationItemsRightBarButtonWithNormalImg:(NSArray<NSString *> *)normalImags highlightedImg:(NSArray<NSString *> *)highlightedImgs {
-    NSMutableArray * rightButtonArray = [NSMutableArray array];
-    for (int i = 0; i < normalImags.count; i++) {
-        UIButton * customButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [customButton setImage:[UIImage imageNamed:normalImags[i]] forState:UIControlStateNormal];
-        if (highlightedImgs) {
-            [customButton setImage:[UIImage imageNamed:highlightedImgs[i]] forState:UIControlStateHighlighted];
-        }
-        customButton.tag = i;
-        [customButton addTarget:self action:@selector(customRightButtonsClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [customButton sizeToFit];
-        UIBarButtonItem * customBtnItem           = [[UIBarButtonItem alloc] initWithCustomView:customButton];
-        UIBarButtonItem * fixedSpaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedSpaceBarButtonItem.width             = self.itemsSpace * SizeAdapter;
-
-        [rightButtonArray addObject:customBtnItem];
-        [rightButtonArray addObject:fixedSpaceBarButtonItem];
-    }
-    [rightButtonArray removeLastObject];
-
-    self.navigationItem.rightBarButtonItems = [rightButtonArray copy];
-}
-/************************************一个右侧按钮自定义创建方法******************************************/
-- (void)createNavigationItemRightBarButtonWithNormalTitle:(NSString *)normalTitle {
-    [self.rightButton setTitle:normalTitle forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightButton];
-}
-- (void)createNavigationItemRightBarButtonWithNormalTitle:(NSString *)normalTitle normalColor:(UIColor *)normalColor highlightedColor:(UIColor *)highlightedColor {
-    [self.rightButton setTitle:normalTitle forState:UIControlStateNormal];
-
-    [self.rightButton setTitleColor:normalColor forState:UIControlStateNormal];
-    [self.rightButton setTitleColor:highlightedColor forState:UIControlStateHighlighted];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightButton];
-}
-- (void)createNavigationItemRightBarButtonWithNormalImg:(NSString *)normalImag highlightedImg:(NSString *)highlightedImg {
-    UIButton * customButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customButton addTarget:self action:@selector(navRightButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [customButton sizeToFit];
-    [customButton setImage:[UIImage imageNamed:normalImag] forState:UIControlStateNormal];
-    if (highlightedImg) {
-        [customButton setImage:[UIImage imageNamed:highlightedImg] forState:UIControlStateHighlighted];
-    }
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
-}
-/************************************左侧按钮自定义创建方法******************************************/
-//- (void)createNavigationItemLeftBarButtonWithNormalTitle:(NSString *)normalTitle highlightedTitle:(NSString *)highlightedTitle{
-//    self.navigationItem.leftBarButtonItem = nil;
-//
-//    [self.leftButton setTitle:normalTitle forState:UIControlStateNormal];
-//    [self.leftButton setTitle:highlightedTitle forState:UIControlStateHighlighted];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftButton];
-//
-//}
-//- (void)createNavigationItemLeftBarButtonWithNormalTitle:(NSString *)normalTitle highlightedTitle:(NSString *)highlightedTitle normalColor:(UIColor *)normalColor highlightedColor:(UIColor *)highlightedColor
-//{
-//    [self.leftButton setTitle:normalTitle forState:UIControlStateNormal];
-//    [self.leftButton setTitle:highlightedTitle forState:UIControlStateHighlighted];
-//
-//    [self.leftButton setTitleColor:normalColor forState:UIControlStateNormal];
-//    [self.leftButton setTitleColor:highlightedColor forState:UIControlStateHighlighted];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftButton];
-//
-//}
-//- (void)createNavigationItemLeftBarButtonWithNormalImg:(NSString *)normalImag highlightedImg:(NSString *)highlightedImg
-//{
-//    [self.leftButton setImage:[UIImage imageNamed:normalImag] forState:UIControlStateNormal];
-//    [self.leftButton setImage:[UIImage imageNamed:highlightedImg] forState:UIControlStateHighlighted];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftButton];
-//}
-#pragma mark ======= 自定义导航栏的Action
-- (void)customRightButtonsClicked:(UIButton *)sender {
-}
-- (void)navRightButtonClicked:(UIButton *)sender {
-}
-/**
- 文字或者图片定制更强的返回按钮点击事件
- */
-- (void)navLeftButtonClicked:(UIButton *)sedner {
-}
-#pragma mark ======= config
-- (void)setViewBackGroundColor:(UIColor *)viewBackGroundColor {
-    if (viewBackGroundColor) {
-        _viewBackGroundColor      = viewBackGroundColor;
-        self.view.backgroundColor = viewBackGroundColor;
-    }
+    _navTitle            = navTitle;
+    self.navBar.navTitle = _navTitle;
 }
 - (void)setNavTitleFont:(CGFloat)navTitleFont {
-    if (navTitleFont) {
-        _navTitleFont        = navTitleFont;
-        self.titleLabel.font = FONT(_navTitleFont);
-    }
+    _navTitleFont            = navTitleFont;
+    self.navBar.navTitleFont = _navTitleFont;
 }
 - (void)setNavTitleColor:(UIColor *)navTitleColor {
-    if (navTitleColor) {
-        _navTitleColor            = navTitleColor;
-        self.titleLabel.textColor = _navTitleColor;
-    }
+    _navTitleColor            = navTitleColor;
+    self.navBar.navTitleColor = _navTitleColor;
 }
 - (void)setNavBackGroundColor:(UIColor *)navBackGroundColor {
-    if (navBackGroundColor) {
-        _navBackGroundColor                                  = navBackGroundColor;
-        self.navigationController.navigationBar.barTintColor = _navBackGroundColor;
-    }
-}
-- (void)setNavBackGroundImageNamed:(NSString *)navBackGroundImageNamed {
-    if (navBackGroundImageNamed) {
-        _navBackGroundImageNamed = navBackGroundImageNamed;
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:_navBackGroundImageNamed] forBarMetrics:UIBarMetricsDefault];
-    }
+    _navBackGroundColor         = navBackGroundColor;
+    self.navBar.backgroundColor = _navBackGroundColor;
 }
 - (void)setIsShowNavLine:(BOOL)isShowNavLine {
-    _isShowNavLine = isShowNavLine;
-    if (!_isShowNavLine) {
-        [self.navLineView removeFromSuperview];
-    }
+    _isShowNavLine         = isShowNavLine;
+    self.navBar.isShowLine = _isShowNavLine;
+}
+- (void)setNavBackGroundImageNamed:(NSString *)navBackGroundImageNamed {
+    _navBackGroundImageNamed    = navBackGroundImageNamed;
+    self.navBar.backgroundImage = [UIImage imageNamed:_navBackGroundImageNamed];
+}
+- (void)setItemsSpace:(CGFloat)itemsSpace {
+    _itemsSpace       = itemsSpace;
+    self.navBar.space = _itemsSpace;
 }
 - (void)setLeftBarButtonItemTitleFont:(CGFloat)leftBarButtonItemTitleFont {
-    if (leftBarButtonItemTitleFont) {
-        _leftBarButtonItemTitleFont     = leftBarButtonItemTitleFont;
-        self.leftButton.titleLabel.font = FONT(_leftBarButtonItemTitleFont);
-    }
+    _leftBarButtonItemTitleFont            = leftBarButtonItemTitleFont;
+    self.navBar.leftBarButtonItemTitleFont = _leftBarButtonItemTitleFont;
 }
 - (void)setRightBarButtonItemTitleFont:(CGFloat)rightBarButtonItemTitleFont {
-    if (rightBarButtonItemTitleFont) {
-        _rightBarButtonItemTitleFont     = rightBarButtonItemTitleFont;
-        self.rightButton.titleLabel.font = FONT(_rightBarButtonItemTitleFont);
-    }
+    _rightBarButtonItemTitleFont            = rightBarButtonItemTitleFont;
+    self.navBar.rightBarButtonItemTitleFont = _rightBarButtonItemTitleFont;
 }
-//- (void)setItemsSpace:(CGFloat)itemsSpace
-//{
-//    UIBarButtonItem *fixedSpaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    fixedSpaceBarButtonItem.width = itemsSpace*SizeAdapter;
-//    NSMutableArray * array = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
-//    for (int i = 0 ; i < array.count; i++) {
-//        [array insertObject:fixedSpaceBarButtonItem atIndex:i];
-//    }
-//}
+#pragma mark ======= public methods
+#pragma mark--------- left
+- (void)wya_addLeftNavBarButtonWithNormalTitle:(NSArray<NSString *> *)normalTitles {
+    [self.navBar wya_addLeftNavBarButtonWithNormalTitle:normalTitles];
+}
+- (void)wya_addLeftNavBarButtonWithNormalImage:(NSArray<NSString *> *)normalImages
+                                highlightedImg:(NSArray<NSString *> *)highlightedImgs {
+    [self.navBar wya_addLeftNavBarButtonWithNormalImage:normalImages
+                                         highlightedImg:highlightedImgs];
+}
+- (void)wya_addLeftNavBarButtonWithNormalTitle:(NSArray<NSString *> *)normalTitles
+                                   normalColor:(NSArray<UIColor *> *)normalColors
+                              highlightedColor:(NSArray<UIColor *> *)highlightedColors {
+    [self.navBar wya_addLeftNavBarButtonWithNormalTitle:normalTitles
+                                            normalColor:normalColors
+                                       highlightedColor:highlightedColors];
+}
+#pragma mark-------- right
+- (void)wya_addRightNavBarButtonWithNormalTitle:(NSArray<NSString *> *)normalTitles {
+    [self.navBar wya_addRightNavBarButtonWithNormalTitle:normalTitles];
+}
+- (void)wya_addRightNavBarButtonWithNormalImage:(NSArray<NSString *> *)normalImages
+                                 highlightedImg:(NSArray<NSString *> *)highlightedImgs {
+    [self.navBar wya_addRightNavBarButtonWithNormalImage:normalImages
+                                          highlightedImg:highlightedImgs];
+}
+- (void)wya_addRightNavBarButtonWithNormalTitle:(NSArray<NSString *> *)normalTitles
+                                    normalColor:(NSArray<UIColor *> *)normalColors
+                               highlightedColor:(NSArray<UIColor *> *)highlightedColors {
+    [self.navBar wya_addRightNavBarButtonWithNormalTitle:normalTitles
+                                             normalColor:normalColors
+                                        highlightedColor:highlightedColors];
+}
+#pragma mark ======= WYANavBarDelegate
+- (void)wya_goBackPressed:(UIButton *)sender {
+    [self wya_goBack];
+}
+- (void)wya_leftBarButtonItemPressed:(UIButton *)sender {
+    [self wya_customLeftBarButtonItemPressed:sender];
+}
+- (void)wya_rightBarButtonItemPressed:(UIButton *)sender {
+    [self wya_customrRightBarButtonItemPressed:sender];
+}
+#pragma mark ======= Event
+- (void)wya_goBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)wya_customLeftBarButtonItemPressed:(UIButton *)sender {
+    NSLog(@"%@", sender.titleLabel.text);
+}
+- (void)wya_customrRightBarButtonItemPressed:(UIButton *)sender {
+    NSLog(@"%@", sender.titleLabel.text);
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 @end

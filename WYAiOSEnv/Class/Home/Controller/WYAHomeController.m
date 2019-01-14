@@ -8,7 +8,7 @@
 
 #import "WYAHomeController.h"
 #import "AnimationExampleController.h"
-#import "NavExampleViewController.h"
+#import "WYANavBarViewController.h"
 #import "NetWorkExampleViewController.h"
 #import "RefreshExampleController.h"
 #define CELLID @"cellId"
@@ -39,10 +39,9 @@
 }
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, WYATopHeight, ScreenWidth, ScreenHeight)];
         _tableView.delegate   = self;
         _tableView.dataSource = self;
-        [self solveableViewOverrides:_tableView]; // 解决tableView被遮挡的问题
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELLID];
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
@@ -68,7 +67,7 @@
     BaseViewController * vc;
     switch (indexPath.row) {
         case 0: {
-            vc = [[NavExampleViewController alloc] init];
+            vc = [[WYANavBarViewController alloc] init];
         } break;
         case 1: {
             vc = [[RefreshExampleController alloc] init];

@@ -14,9 +14,10 @@ static const CGFloat MJDuration = 2.0;
  */
 #define MJRandomData [NSString stringWithFormat:@"随机数据---%d", arc4random_uniform(1000000)]
 
-@interface RefreshTableViewController ()
+@interface RefreshTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 用来显示的假数据 */
 @property (strong, nonatomic) NSMutableArray * data;
+@property(nonatomic, strong) UITableView * tableView;
 @end
 
 @implementation RefreshTableViewController
@@ -270,7 +271,8 @@ static const CGFloat MJDuration = 2.0;
 #pragma mark - 其他
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.navTitle = @"Refresh";
+    [self.view addSubview:self.tableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     if (self.section == 0) {
@@ -333,4 +335,16 @@ static const CGFloat MJDuration = 2.0;
     return cell;
 }
 
+
+- (UITableView *)tableView{
+    if(!_tableView){
+        _tableView = ({
+            UITableView * object = [[UITableView alloc]initWithFrame:CGRectMake(0, WYATopHeight, ScreenWidth, ScreenHeight - WYATopHeight)];
+            object.delegate = self;
+            object.dataSource = self;
+            object;
+       });
+    }
+    return _tableView;
+}
 @end

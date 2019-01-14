@@ -38,10 +38,9 @@
 }
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, WYATopHeight, ScreenWidth, ScreenHeight)];
         _tableView.delegate   = self;
         _tableView.dataSource = self;
-        [self solveableViewOverrides:_tableView]; // 解决tableView被遮挡的问题
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:REFRESH_CELLID];
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }

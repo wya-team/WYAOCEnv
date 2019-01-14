@@ -14,4 +14,7 @@
 #import <Masonry/Masonry.h>
 #import <YYModel/YYModel.h>
 
+#import <WYAKit/WYAAlertController.h>
+#import <WYAKit/Category.h>
+#import "UIColor+WYAColor.h"
 #endif /* WYAThirdClassHeader_h */

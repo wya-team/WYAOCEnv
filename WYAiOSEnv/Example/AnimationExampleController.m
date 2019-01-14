@@ -35,10 +35,10 @@
 }
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, WYATopHeight, ScreenWidth, ScreenHeight)];
         _tableView.delegate   = self;
         _tableView.dataSource = self;
-        [self solveableViewOverrides:_tableView]; // 解决tableView被遮挡的问题
+        
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:Animation_CELLID];
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
@@ -64,31 +64,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            [tableView moveAnimation];
+            [tableView wya_moveAnimation];
             break;
         case 1:
-            [tableView alphaAnimation];
+            [tableView wya_alphaAnimation];
             break;
         case 2:
-            [tableView fallAnimation];
+            [tableView wya_fallAnimation];
             break;
         case 3:
-            [tableView shakeAnimation];
+            [tableView wya_shakeAnimation];
             break;
         case 4:
-            [tableView overTurnAnimation];
+            [tableView wya_overTurnAnimation];
             break;
         case 5:
-            [tableView toTopAnimation];
+            [tableView wya_toTopAnimation];
             break;
         case 6:
-            [tableView springListAnimation];
+            [tableView wya_springListAnimation];
             break;
         case 7:
-            [tableView shrinkToTopAnimation];
+            [tableView wya_shrinkToTopAnimation];
             break;
         case 8:
-            [tableView roteAnimation];
+            [tableView wya_roteAnimation];
             break;
         default:
             break;

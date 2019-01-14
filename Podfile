@@ -10,4 +10,5 @@ pod 'IQKeyboardManager','~>6.0.4'
 
 pod 'YYModel','~>1.0.4'
 pod 'Bugly','~>2.5.0'
+pod 'WYAKit','~>0.1.0'
 end

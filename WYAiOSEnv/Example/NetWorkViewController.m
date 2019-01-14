@@ -109,7 +109,7 @@
 }
 
 - (void)exampleDownloadOneFile {
-    NSString * string = [[NSString docPath] stringByAppendingPathComponent:@"aaa.mp4"];
+    NSString * string = [[NSString wya_docPath] stringByAppendingPathComponent:@"aaa.mp4"];
     NSLog(@"string-==%@", string);
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"下载" forState:UIControlStateNormal];
