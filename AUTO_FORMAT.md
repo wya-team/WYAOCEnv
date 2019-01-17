@@ -1,4 +1,4 @@
-# 自动格式化
+# AUTO_FORMAT
 
 详情请参考：<http://clang.llvm.org/docs/ClangFormatStyleOptions.html>
 
@@ -75,7 +75,7 @@ IndentBraces|缩进包裹的括号本身|true、false
 ![F7C76BAD-149F-4F4C-A4E4-6A4B721CEF12](media/15470022896999/F7C76BAD-149F-4F4C-A4E4-6A4B721CEF12.png)
 
 * 安装
-    * 命令进入项目根目录，执行执行项目中的CodeReview文件夹中的setup-repo.sh命令
+    * 命令进入项目根目录，执行执行项目中的CodeReview文件夹中的setup-repo.sh命令(安装在哪个文件路径下就会对该路径下的文件进行格式化，pod文件不会被格式化)
 
 * 提交（提交代码时请cd至项目根目录）
      * 执行项目中的CodeReview文件夹中的format-objc-files-in-repo.sh命令（该命令会格式化项目所有文件）
@@ -100,6 +100,23 @@ IndentBraces|缩进包裹的括号本身|true、false
 * 修改 
      * 如想要修改格式化文件内容请使用快捷键：`shift+command+.`显示隐藏文件，就可以看到.clang-format文件，使用编辑器打开进行修改
 
+* 忽略文件
+     * 如果想要忽略某些文件，请在隐藏文件.formatting-directory-ignore中引入该文件的路径，不同路径用换行符分隔，路径后面不要有空格,例如：
+       ![屏幕快照 2019-01-17 10.40.03](media/15470022896999/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-17%2010.40.03.png)
 
+* 格式化文件
+    * 如果仅仅想格式化指定目录下的文件，新建的文件名叫.formatting-directory并引入想要格式化的文件的路径，不同路径用换行符分隔，路径后面不要有空格（默认并不会创建该文件，如果安装在根目录下将自动格式化工程所有Object-C文件）        
+
+* 出现的问题
+    ![屏幕快照 2019-01-17 10.03.52](media/15470022896999/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-01-17%2010.03.52.png)
+出现以上问题，请在对应的文件中在#import的位置，把当前文件的头文件放在最上方，与其他头文件有一个空行隔开，在进行以下命令格式化
+
+    ```
+    "/Users/lishihang/Desktop/GitProject/其他/WYAiOSEnv/CodeReview"/format-objc-files.sh -s
+    或者
+    在项目根路径执行format-objc-files-in-repo.sh文件
+    ```
+
+ 
 
 
