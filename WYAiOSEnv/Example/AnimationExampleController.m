@@ -38,7 +38,7 @@
         _tableView            = [[UITableView alloc] initWithFrame:CGRectMake(0, WYATopHeight, ScreenWidth, ScreenHeight)];
         _tableView.delegate   = self;
         _tableView.dataSource = self;
-        
+
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:Animation_CELLID];
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
