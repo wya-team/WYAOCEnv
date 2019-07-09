@@ -22,47 +22,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createTabBarModelArray];
+    [self.tabBar setBackgroundColor:[UIColor whiteColor]];
     self.tabBar.translucent = NO;
+    [self creatViewControllers];
+    self.selectedIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 #pragma mark =========== createModel
-- (void)createTabBarModelArray {
-    NSMutableArray * array           = [NSMutableArray array];
-    RootControllerModel * item1Model = [RootControllerModel modelWithTitle:@"首页"
-                                                                 className:@"WYAHomeController"
-                                                           normalImageName:@"home_normal"
-                                                         selectedImageName:@"home_selected"];
+- (NSArray *)tabBarModelArray {
+    if (!_tabBarModelArray) {
+        NSMutableArray * array           = [NSMutableArray array];
+        RootControllerModel * item1Model = [RootControllerModel modelWithTitle:@"首页"
+                                                                     className:@"WYAHomeController"
+                                                               normalImageName:@"home_normal"
+                                                             selectedImageName:@"home_selected"];
 
-    RootControllerModel * item2Model = [RootControllerModel modelWithTitle:@"我的"
-                                                                 className:@"WYAMineController"
-                                                           normalImageName:@"More_normal"
-                                                         selectedImageName:@"More_selected"];
-    [array addObject:item1Model];
-    [array addObject:item2Model];
-    _tabBarModelArray = [array copy];
-    [self creatViewControllers];
+        RootControllerModel * item2Model = [RootControllerModel modelWithTitle:@"我的"
+                                                                     className:@"WYAMineController"
+                                                               normalImageName:@"More_normal"
+                                                             selectedImageName:@"More_selected"];
+        [array addObject:item1Model];
+        [array addObject:item2Model];
+        _tabBarModelArray = [array copy];
+    }
+    return _tabBarModelArray;
 }
 
 #pragma mark - UI -
 - (void)creatViewControllers {
     NSMutableArray * viewControllers = [NSMutableArray array];
-    for (RootControllerModel * model in _tabBarModelArray) {
+    for (RootControllerModel * model in self.tabBarModelArray) {
         NSString * className              = model.className;
         UIViewController * viewController = [[NSClassFromString(className) alloc] init];
         UINavigationController * nav      = [[UINavigationController alloc] initWithRootViewController:viewController];
         nav.tabBarItem.title              = model.tabBarTitle;
         nav.tabBarItem.image              = [model normalImage];
         nav.tabBarItem.selectedImage      = [model selectedImage];
-        CGFloat fontSize                  = self.tabBarTitleFont == 0 ? 14 : self.tabBarTitleFont;
-        [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.normalTitleColor == nil ? WYA_RGB_COLOR(102, 102, 102) : self.normalTitleColor,
+        CGFloat fontSize                  = 14;
+        [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : WYA_RGB_COLOR(102, 102, 102),
                                                              NSFontAttributeName : FONT(fontSize) }
                                                  forState:UIControlStateNormal];
 
-        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:self.selectedTitleColor == nil ? WYA_RGB_COLOR(77, 154, 247) : self.selectedTitleColor, NSForegroundColorAttributeName, nil] forState:(UIControlStateSelected)];
+        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:WYA_RGB_COLOR(77, 154, 247), NSForegroundColorAttributeName, nil] forState:(UIControlStateSelected)];
         [viewControllers addObject:nav];
     }
     self.viewControllers = viewControllers;
@@ -73,21 +77,4 @@
     }
 }
 
-- (void)setTabBarTitleFont:(CGFloat)tabBarTitleFont {
-    _tabBarTitleFont = tabBarTitleFont;
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.normalTitleColor == nil ? [UIColor grayColor] : self.normalTitleColor,
-                                                         NSFontAttributeName : FONT(tabBarTitleFont) }
-                                             forState:UIControlStateNormal];
-}
-- (void)setNormalTitleColor:(UIColor *)normalTitleColor {
-    _normalTitleColor = normalTitleColor;
-    CGFloat fontSize  = self.tabBarTitleFont == 0 ? 14 : self.tabBarTitleFont;
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : _normalTitleColor,
-                                                         NSFontAttributeName : FONT(fontSize) }
-                                             forState:UIControlStateNormal];
-}
-- (void)setSelectedTitleColor:(UIColor *)selectedTitleColor {
-    _selectedTitleColor = selectedTitleColor;
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_selectedTitleColor, NSForegroundColorAttributeName, nil] forState:(UIControlStateSelected)];
-}
 @end

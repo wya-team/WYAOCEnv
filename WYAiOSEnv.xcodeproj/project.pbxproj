@@ -250,10 +250,8 @@
 		95C2FF3D20F0533500ED829B /* BaseFile */ = {
 			isa = PBXGroup;
 			children = (
-				95C2FF3F20F0533500ED829B /* BaseViewController.h */,
-				95C2FF3E20F0533500ED829B /* BaseViewController.m */,
-				21271DD020F59341008EBAD1 /* BaseNetWorking.h */,
-				21271DD120F59341008EBAD1 /* BaseNetWorking.m */,
+				95D0F81D22D2D7F100B002FC /* BaseNetWork */,
+				95D0F81A22D2D0EB00B002FC /* BaseViewController */,
 			);
 			path = BaseFile;
 			sourceTree = "<group>";
@@ -404,6 +402,24 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		95D0F81A22D2D0EB00B002FC /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				95C2FF3F20F0533500ED829B /* BaseViewController.h */,
+				95C2FF3E20F0533500ED829B /* BaseViewController.m */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		95D0F81D22D2D7F100B002FC /* BaseNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				21271DD020F59341008EBAD1 /* BaseNetWorking.h */,
+				21271DD120F59341008EBAD1 /* BaseNetWorking.m */,
+			);
+			path = BaseNetWork;
 			sourceTree = "<group>";
 		};
 		95DE134D21ECB52200B5867B /* UIColor */ = {

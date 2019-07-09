@@ -14,19 +14,25 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
 @implementation BaseNetWorking
 
 + (AFHTTPSessionManager *)AFManager {
-    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
-    // 超过时间
-    manager.requestSerializer.timeoutInterval = kDefaultTimeoutInterval;
+    static AFHTTPSessionManager * manager;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [AFHTTPSessionManager manager];
+        // 超过时间
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = kDefaultTimeoutInterval;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
 
-    // 声明上传的是json格式的参数，需要你和后台约定好，不然会出现后台无法获取到你上传的参数问题
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer]; // 上传普通格式
-    //    manager.requestSerializer = [AFJSONRequestSerializer serializer]; // 上传JSON格式
+        // 声明获取到的数据格式
+        // AFN不会解析,数据是data，需要自己解析
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
-    // 声明获取到的数据格式
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer]; // AFN不会解析,数据是data，需要自己解析
-    //        manager.responseSerializer = [AFJSONResponseSerializer serializer]; // AFN会JSON解析返回的数据
-    // 个人建议还是自己解析的比较好，有时接口返回的数据不合格会报3840错误，大致是AFN无法解析返回来的数据
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"text/xml", nil];
+        // AFN会JSON解析返回的数据
+        //        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        // 个人建议还是自己解析的比较好，有时接口返回的数据不合格会报3840错误，大致是AFN无法解析返回来的数据
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/xml", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"text/xml", nil];
+
+    });
     return manager;
 }
 
@@ -35,6 +41,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
            Success:(Success)success
               Fail:(Fail)fail {
     AFHTTPSessionManager * manager = [self AFManager];
+    AFHTTPRequestSerializer * request = [AFHTTPRequestSerializer serializer];
 
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * token              = [userDefaults objectForKey:@"access_token"];
@@ -42,7 +49,11 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
     if (token) {
         [dic setObject:token forKey:@"access_token"];
     }
-
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<");
+    NSLog(@"本次Get请求URL:%@",urlString);
+    NSLog(@"本次Get请求的Headers:%@",request.HTTPRequestHeaders);
+    NSLog(@"本次Get请求的参数:%@",dic);
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<");
     [manager GET:urlString
         parameters:dic
         progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -66,6 +77,7 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
             Success:(Success)success
                Fail:(Fail)fail {
     AFHTTPSessionManager * manager = [self AFManager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
 
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * token              = [userDefaults objectForKey:@"access_token"];
@@ -73,7 +85,11 @@ static const NSUInteger kDefaultTimeoutInterval = 6;
     if (token) {
         [dic setObject:token forKey:@"access_token"];
     }
-
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<");
+    NSLog(@"本次Post请求URL:%@",urlString);
+    NSLog(@"本次Post请求的Headers:%@",manager.requestSerializer.HTTPRequestHeaders);
+    NSLog(@"本次Post请求的参数:%@",dic);
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<");
     [manager POST:urlString
         parameters:dic
         progress:^(NSProgress * _Nonnull uploadProgress) {
